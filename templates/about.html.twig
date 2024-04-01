@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="container">
+            <h1>This is the about page</h1>
+
+            <div class="column">
+                <div class="cln-1">
+                    <a href="https://github.com/dbwebb-se/mvc"><p>mvc Github</p></a>
+                    <a href="https://github.com/MoRosGi/bth-Report"><p>min Github</p></a>
+                </div>
+
+                <div class="cln-2">
+                    <p>Kursen mvc fokuserar på objektorienterade programmering i PHP. Målet är att förbereda sig för utveckling av webbapplikationer genom att kombinera klassiska objektorienterade tekniker med webbaserade ramverk och databasintegration.</p>
+
+                    <img src="{{ asset('img/mvc.png') }}" alt="me">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

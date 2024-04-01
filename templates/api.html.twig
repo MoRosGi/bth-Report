@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Api{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="container">
+            <h1>Api</h1>
+            <h2>List of JSON routes.</h2>
+        <ul>
+            <li>
+                <a href="{{ path('quote') }}">Quote</a>
+                <p>Quote of the day with timestamp and today's date.</p>
+            </li>
+        </ul>
+        </div>
+    </div>
+{% endblock %}

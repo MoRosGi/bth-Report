@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="container">
+            <h1>Lucky you!</h1>
+            <h2>Lets see your kaomoji.</h2>
+            <div class="lucky">
+                <div class="kaomoji">
+                    <h3>{{ lucky }}</h3>
+                </div>
+
+                <img src="{{ asset('img/lucky.jpg') }}" alt="me">
+            </div>
+
+        </div>
+        </div>
+    </div>
+{% endblock %}

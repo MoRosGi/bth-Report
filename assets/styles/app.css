@@ -1,3 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Libre+Baskerville&family=Yeseva+One&display=swap');
+
+/* base */
+* {
+    box-sizing: border-box;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
-    background-color: skyblue;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1 0 auto;
+    background-color: #edf0e9;
+}
+
+.container {
+    max-width: 67rem;
+    padding: 1.96rem 1.5rem;
+    background-color: #84d4c6;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+ol, ul {
+    padding-left: 1.5em;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* header */
+.header {
+    flex: 0 0 auto;
+    border-bottom: 2px solid #903146;
+    background-color: #edf0e9;
+}
+
+.site-header {
+    margin-left: 6em;
+    color:#5a063d;
+}
+
+.header, .site-header {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-weight: 500;
+}
+
+
+/* navbar */
+nav a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 1.9rem 0;
+    color: #903146;
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em 0;
+    list-style: none;
+}
+
+nav ul li {
+    padding: 0 1em;
+}
+
+/* footer */
+.footer {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #edf0e9;
+    border-top: 2px solid #903146;
+}
+
+.footer a, .footer p {
+    padding: 0.1em 2em;
+}
+
+
+/* typography */
+h1, .site-title {
+    font-family: 'Yeseva One', serif;
+}
+
+h2,
+h3,
+h4,
+h6 {
+    margin-bottom: 0.8em;
+    margin-top: 0.6em;
+    font-family: 'Libre Baskerville', serif;
+}
+
+h1 {
+    margin-bottom: 2.8em;
+    margin-top: 0.6em;
+}
+
+body {
+    line-height: 1.4;
+    color: #5a063d;
+}
+
+a, p, td, th, li, dd {
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: 1.75rem;
+}
+
+nav a {
+    font-family: 'Libre Baskerville', serif;
+}
+
+a {
+    color: #903146;
+}
+
+
+/* about */
+.column {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* gap: 2rem; */
+}
+
+.cln-1 {
+    width: 20%;
+}
+
+.cln-2 {
+    width: 70%;
+    border-left: 3px solid #903146;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+}
+
+.cln-2 p, .cln-2 img {
+    padding-left: 4rem;
+}
+
+
+/* lucky */
+.lucky {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.kaomoji {
+    border: 2px solid #903146;
+    padding: 2rem;
 }
