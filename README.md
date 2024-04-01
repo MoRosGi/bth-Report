@@ -28,7 +28,7 @@ You need to have composer and PHP 3 installed.
     - [install webapp](#install-webapp)
     - [install Twig](#install-twig)
     - [install Encore](#install-encore)
-    - [run the app](#run-the-app)
+- [Run the app](#run-the-app)
 - [Features](#features)
 - [Styling](#styling)
 - [Contributors](#contributors)
@@ -43,7 +43,7 @@ Change the current working directory to the location where you want the cloned d
 Type git clone, and then paste the URL you copied earlier.
 
 ```
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+git clone https://github.com//MoRosGi/bth-Report.git
 ```
 
 
@@ -77,7 +77,8 @@ composer require symfony/webpack-encore-bundle
 npm install
 ```
 
-## run the app:
+
+## Run the app:
 You can open the PHP built-in web server to run the app local.
 
 ```
@@ -100,8 +101,8 @@ The website has been styled to provide a cohesive and visually appealing experie
 
 
 ## Contributors
-mogi23 - Developer
-Acknowledgements
-Symfony Framework
-Twig Templating Engine
-Composer
+* mogi23 - Developer
+* Acknowledgements:
+    * Symfony Framework
+    * Twig Templating Engine
+    * Composer
