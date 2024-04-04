@@ -150,7 +150,6 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* gap: 2rem; */
 }
 
 .cln-1 {
@@ -160,9 +159,6 @@ a {
 .cln-2 {
     width: 70%;
     border-left: 3px solid #903146;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
 }
 
 .cln-2 p, .cln-2 img {
@@ -182,4 +178,46 @@ a {
 .kaomoji {
     border: 2px solid #903146;
     padding: 2rem;
+}
+
+
+/* pig game - kmom02 */
+button, input[type="submit" i] {
+    background-color: #903146;
+    border: none;
+    color: #edf0e9;
+    padding: 0.2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.die {
+    font-size: 2em;
+}
+
+.flash-notice {
+    padding: 0.5em;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+
+.flash-notice:before {
+    content: "ⓘ";
+}
+
+.flash-warning {
+    padding: 0.5em;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.flash-warning:before {
+    content: "⚠";
 }
