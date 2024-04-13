@@ -144,6 +144,11 @@ a {
     color: #903146;
 }
 
+li a {
+    margin-bottom: 0.4em;
+    margin-top: 1.3em;
+}
+
 
 /* about */
 .column {
@@ -163,6 +168,22 @@ a {
 
 .cln-2 p, .cln-2 img {
     padding-left: 4rem;
+}
+
+
+/* api */
+.code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 0.1em;
+    margin-right: 2em;
+}
+
+
+.api-a {
+    margin-bottom: 0.5em;
+    margin-top: 1.2em;
 }
 
 
@@ -191,7 +212,8 @@ button, input[type="submit" i] {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-left: 1rem;
+    margin-bottom: 0.4em;
+    margin-top: 1.3em;
     cursor: pointer;
     border-radius: 4px;
 }
@@ -221,3 +243,23 @@ button, input[type="submit" i] {
 .flash-warning:before {
     content: "⚠";
 }
+
+
+/* card game - kmom02 */
+.card-container {
+    margin-left: 12em;
+}
+
+.card {
+    font-size: 1.5em;
+    color: #903146;
+}
+
+label {
+    font-size: 0.8em;
+}
+
+
+
+
+
