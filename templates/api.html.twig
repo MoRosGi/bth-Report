@@ -6,11 +6,65 @@
     <div class="main">
         <div class="container">
             <h1>Api</h1>
+
+            <h2><a href="{{ path('session') }}">Go to Session content</a></h2>
+
             <h2>List of JSON routes.</h2>
         <ul>
             <li>
-                <a href="{{ path('quote') }}">Quote</a>
-                <p>Quote of the day with timestamp and today's date.</p>
+                <span class="code">api/quote</span>
+                <br>
+                <p class ="api-a"><a href="{{ path('quote') }}">Go to Quote</a></p>
+                <p>JSON structure with quote of the day with timestamp and today's date.</p>
+            </li>
+            <li>
+                <span class="code">api/deck</span>
+                <br>
+                <p class ="api-a"><a href="{{ path('api_deck') }}">Go to Deck</a></p>
+                <p>GET method, return JSON struktur with the all cards deck sort suits.</p>
+            </li>
+            <li>
+                <span class="code">api/deck/shuffle</span>
+                <br>
+                <form method="post" action="">
+                        <input type="submit" name="shuffle" value="Go to Shuffle"
+                            onClick="this.form.action='{{ path('api_shuffle') }}';"
+                        >
+                </form>
+                <p>POST method, return JSON struktur of shuffled card deck.</p>
+            </li>
+            <li>
+                <span class="code">api/deck/draw</span>
+                <form method="post" action="">
+                        <input type="submit" name="draw" value="Go to Draw"
+                            onClick="this.form.action='{{ path('api_draw') }}';"
+                        >
+                </form>
+                <p>POST method, draw one card, return JSON struktur of card deck with card draw and number of cards left in the deck.</p>
+            </li>
+            <li>
+                <span class="code">api/deck/draw/many</span>
+                <form method="post" action="">
+                    <label>Number cards to draw:</label>
+                    <input type="number" name="num_card" min="1" max="52" value="1">
+                    <input type="submit" name="do_it" value="Go to Draw Many"
+                    onClick="this.form.action='{{ path('api_draw_many') }}';"
+                    >
+                </form>
+                <p>POST method, draw a certain number of cards, return JSON struktur of card deck with card draw and number of cards left in the deck.</p>
+            </li>
+            <li>
+                <span class="code">api/deck/deal</span>
+                <form method="post" action="">
+                    <label>Number player:</label>
+                    <input type="number" name="num_player" min="1" max="10" value="1">
+                    <label>Number cards to deal:</label>
+                    <input type="number" name="num_card" min="1" max="10" value="1">
+                    <input type="submit" name="do_it" value="Go to Deal"
+                    onClick="this.form.action='{{ path('api_deal') }}';"
+                    >
+                </form>
+                <p>POST method, create a Game with players and hand, distribute a certain number of cards to a certain number of players.</p>
             </li>
         </ul>
         </div>
