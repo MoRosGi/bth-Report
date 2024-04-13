@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Pig Game{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="container">
+            <span><a href="{{ path('card_init') }}">Back to Card Menu</a></span>
+            <h1>Card deck</h1>
+
+            <div class="card-container">
+                {% for cards in deck %}
+                    <span class="card">{{ cards }}</span>
+                    {% if loop.index % 13 == 0 %}
+                        <br>
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <h2>Number of cards in deck:</h2>
+            <div class="card-container">
+                <p class="card">{{ countCard }}</p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
