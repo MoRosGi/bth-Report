@@ -2,24 +2,38 @@
 
 namespace App\Card;
 
+use App\Card\Card;
 use App\Card\CardDeck;
 use App\Card\Player;
-use App\Card\CardHand;
 
 class Game
 {
-    private $players;
-    private $deck;
+    /**
+    * @var array<Player> $players
+    */
+    protected array $players;
 
-    public function __construct(int $numPlayer, CardDeck $deck)
+    /**
+    * @var CardDeck $deck
+    */
+    protected CardDeck $deck;
+
+
+    public function __construct(CardDeck $deck)
+    {
+        $this->deck = $deck;
+    }
+
+
+    public function addPlayers(int $numPlayer): void
     {
         $this->players = [];
 
         for ($i = 1; $i <= $numPlayer; $i++) {
-            $this->players[] = new Player("Player " . $i, new CardHand());
+            $player = new Player();
+            $player->addName("Player " . $i);
+            $this->players[] = $player;
         }
-
-        $this->deck = $deck;
     }
 
 
@@ -29,11 +43,14 @@ class Game
     }
 
 
-    public function dealCards($numCards): array
+    /**
+    * @return array<Card> $cardDraw
+    */
+    public function dealAllPlayers(int $numCards): array
     {
         $cardDraw = [];
         foreach ($this->players as $player) {
-            $hand = $player->getHand();
+            $hand = $player->getPlayerHand();
             $cards = $this->deck->drawCard($numCards);
 
             foreach ($cards as $card) {
@@ -46,14 +63,14 @@ class Game
     }
 
 
-    public function getPlayerGame(): array
+    /**
+    * @return array<int<0, max>, array{name: string, hand: array<string>, handLetter: array<string>, value: int}> $playersGame
+    */
+    public function getPlayersGame(): array
     {
         $playersGame = [];
         foreach ($this->players as $player) {
-            $playersGame[] = [
-                'name' => $player->getName(),
-                'hand' => $player->getHand()->handString()
-            ];
+            $playersGame[] = $player->getPlayerBoard();
         }
 
         return $playersGame;
