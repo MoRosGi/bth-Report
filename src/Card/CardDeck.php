@@ -3,12 +3,16 @@
 namespace App\Card;
 
 use App\Card\Card;
+use App\Card\CardGraphic;
 
 class CardDeck
 {
-    protected $deck;
+    /**
+    * @var array<Card> $deck
+    */
+    protected array $deck;
 
-    public function __construct($graphic = null)
+    public function __construct(string $graphic = null)
     {
         $this->deck = [];
         $suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
@@ -16,16 +20,15 @@ class CardDeck
 
         foreach ($suits as $suit) {
             foreach ($values as $value) {
-                if ($graphic === "graphic") {
-                    $this->deck[] = new CardGraphic($suit, $value);
-                } else {
-                    $this->deck[] = new Card($suit, $value);
-                }
+                $this->deck[] = $graphic === "graphic" ? new CardGraphic($suit, $value) : new Card($suit, $value);
             }
         }
     }
 
 
+    /**
+    * @return array<Card> $deck
+    */
     public function getDeck(): array
     {
         return $this->deck;
@@ -38,12 +41,16 @@ class CardDeck
     }
 
 
-    public function resetDeck($graphic = null): void
+    public function resetDeck(string $graphic = null): void
     {
         $this->__construct($graphic);
     }
 
 
+    /**
+    * @param array<Card> $arr
+    * @return array<string> $values
+    */
     public function toString(array $arr): array
     {
         $values = [];
@@ -61,6 +68,9 @@ class CardDeck
     }
 
 
+    /**
+    * @return array<Card> $drawCard
+    */
     public function drawCard(int $num): array
     {
         $drawKeys = [];
@@ -68,12 +78,8 @@ class CardDeck
 
         $randKeys = array_rand($this->deck, $num);
 
-        if (gettype($randKeys) === "integer") {
-            array_push($drawKeys, $randKeys);
-        } else {
-            foreach ($randKeys as $key) {
-                array_push($drawKeys, $key);
-            }
+        foreach((array)$randKeys as $key) {
+            array_push($drawKeys, $key);
         }
 
         foreach ($drawKeys as $key) {
@@ -85,7 +91,10 @@ class CardDeck
     }
 
 
-    public function removeFromDeck(array $arr): object
+    /**
+    * @param array<Card> $arr
+    */
+    public function removeFromDeck(array $arr): CardDeck
     {
         foreach ($arr as $item) {
             $index = array_search($item, $this->deck);
