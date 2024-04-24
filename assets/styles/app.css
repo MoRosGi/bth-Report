@@ -68,7 +68,7 @@ a {
 
 /* navbar */
 nav a {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     text-decoration: none;
     padding: 1.9rem 0;
     color: #903146;
@@ -207,7 +207,7 @@ button, input[type="submit" i] {
     background-color: #903146;
     border: none;
     color: #edf0e9;
-    padding: 0.2rem;
+    padding: 0.4rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -227,6 +227,7 @@ button, input[type="submit" i] {
     color: #004085;
     background-color: #cce5ff;
     border-color: #b8daff;
+    font-size: 1.2em;
 }
 
 .flash-notice:before {
@@ -260,6 +261,7 @@ label {
 }
 
 
+/* twenty-one game - kmom03 */
 
 
 
