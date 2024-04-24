@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Card\Card;
-// use App\Card\CardGraphic;
-// use App\Card\CardHand;
 use App\Card\CardDeck;
 use App\Card\Game;
 
@@ -69,7 +67,15 @@ class CardGameController extends AbstractController
     public function deck(
         SessionInterface $session
     ): Response {
+
+        /**
+        * @var CardDeck $deck
+        */
         $deck = $session->get("deck");
+
+        /**
+        * @var array<Card> $cardDraw
+        */
         $cardDraw = $session->get("card_draw");
 
         $deck->resetDeck("graphic");
@@ -88,6 +94,10 @@ class CardGameController extends AbstractController
     public function deckShuffle(
         SessionInterface $session
     ): Response {
+
+        /**
+        * @var CardDeck $deck
+        */
         $deck = $session->get("deck");
 
         $deck->resetDeck("graphic");
@@ -111,7 +121,15 @@ class CardGameController extends AbstractController
     public function deckDraw(
         SessionInterface $session
     ): Response {
+
+        /**
+        * @var CardDeck $deck
+        */
         $deck = $session->get("deck");
+
+        /**
+        * @var array<Card> $cardDraw
+        */
         $cardDraw = $session->get("card_draw");
 
         if ($deck->countDeck() > 0) {
@@ -139,7 +157,15 @@ class CardGameController extends AbstractController
         int $num,
         SessionInterface $session
     ): Response {
+
+        /**
+        * @var CardDeck $deck
+        */
         $deck = $session->get("deck");
+
+        /**
+        * @var array<Card> $cardDraw
+        */
         $cardDraw = $session->get("card_draw");
 
         if ($deck->countDeck() > 0 and $num > 0) {
@@ -168,20 +194,29 @@ class CardGameController extends AbstractController
         int $cards,
         SessionInterface $session
     ): Response {
+
+        /**
+        * @var CardDeck $deck
+        */
         $deck = $session->get("deck");
+
+        /**
+        * @var array<Card> $cardDraw
+        */
         $cardDraw = $session->get("card_draw");
 
-        $game = new Game($players, $deck);
+        $game = new Game($deck);
+        $game->addPlayers($players);
 
         if ($deck->countDeck() > 0 and $cards > 0) {
-            $toDraw = $game->dealCards($cards);
+            $toDraw = $game->dealAllPlayers($cards);
 
             foreach ($toDraw as $card) {
                 array_push($cardDraw, $card);
             }
         }
 
-        $playersGame = $game->getPlayerGame();
+        $playersGame = $game->getPlayersGame();
 
         $session->set("card_draw", $cardDraw);
 
