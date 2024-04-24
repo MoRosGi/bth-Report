@@ -6,51 +6,37 @@ use App\Card\Card;
 
 class CardGraphic extends Card
 {
-    public function __construct($suit, $value)
+    public function __construct(string $suit, string $value)
     {
         parent::__construct($suit, $value);
     }
 
     public function cardString(): string
     {
-        $suitSymbol = '';
-        $valueSymbol = '';
+        $symbols = [
+            'Hearts' => '♥',
+            'Diamonds' => '♦',
+            'Clubs' => '♣',
+            'Spades' => '♠',
+            'Jack' => 'J',
+            'Queen' => 'Q',
+            'King' => 'K',
+            'Ace' => 'A'
+        ];
 
-        switch ($this->suit) {
-            case 'Hearts':
-                $suitSymbol = '♥';
-                break;
-            case 'Diamonds':
-                $suitSymbol = '♦';
-                break;
-            case 'Clubs':
-                $suitSymbol = '♣';
-                break;
-            case 'Spades':
-                $suitSymbol = '♠';
-                break;
-        }
+        $suitSymbol = $symbols[$this->suit] ?? '';
+        $valueSymbol = $symbols[$this->value] ?? '';
 
-        switch ($this->value) {
-            case 'Jack':
-                $valueSymbol = 'J';
-                break;
-            case 'Queen':
-                $valueSymbol = 'Q';
-                break;
-            case 'King':
-                $valueSymbol = 'K';
-                break;
-            case 'Ace':
-                $valueSymbol = 'A';
-                break;
-            default:
-                if (in_array($this->value, range(2, 10))) {
-                    $valueSymbol = $this->value;
-                }
-                break;
+        if (in_array($this->value, range(2, 10))) {
+            $valueSymbol = $this->value;
         }
 
         return "[" . $valueSymbol . $suitSymbol . "]";
+    }
+
+
+    public function cardStringLetter(): string
+    {
+        return parent::cardStringLetter();
     }
 }
