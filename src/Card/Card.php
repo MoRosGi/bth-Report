@@ -4,10 +4,10 @@ namespace App\Card;
 
 class Card
 {
-    protected $suit;
-    protected $value;
+    protected string $suit;
+    protected string $value;
 
-    public function __construct($suit, $value)
+    public function __construct(string $suit, string $value)
     {
         $this->suit = $suit;
         $this->value = $value;
@@ -26,5 +26,29 @@ class Card
     public function cardString(): string
     {
         return $this->value . " of " . $this->suit;
+    }
+
+
+    public function cardStringLetter(): string
+    {
+        return "[" . $this->value . " " . $this->suit . "]";
+    }
+
+    public function cardValue(Card $card): int
+    {
+        $valueConvert = [
+            'Jack' => 11,
+            'Queen' => 12,
+            'King' => 13,
+            'Ace' => 14
+        ];
+
+        $value = (int)($valueConvert[$card->getValue()] ?? 0);
+
+        if (in_array($card->getValue(), range(2, 10))) {
+            $value = (int)$card->getValue();
+        }
+
+        return $value;
     }
 }
