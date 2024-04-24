@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Twenty-One{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="container">
+            <h1>Let's play Twenty-one!</h1>
+
+            <h2><a href="{{ path('session') }}">Go to Session content</a></h2>
+            <h2><a href="{{ path('twentyone_documentation') }}">Go to Twenty-One documentation</a></h2>
+
+            <h2>Twenty-one regler:</h2>
+            <p>Ett spel för en spelare mot banken där målet är att få en hand med ett sammanlagt värde nära eller på 21 utan att överstiga det.</p>
+            <p>Korten har följande värden: Ess kan vara antingen 1 eller 14, kungarna är 13, damerna är 12, och knektarna är 11. Nummerkorten har samma värde som deras nummer.</p>
+            <p>Spelen börja, spelaren ta ett kort.
+            Spelaren väljer sedan att stanna ('Stay') eller ta ett till kort ('Get card').
+            <p>När spelaren stannar, går turen över till banken.
+            Banken drar kort tills den väljer att stanna.</p>
+            <p>Banken vinner om den har en hand med högre värde än spelaren, om det blir lika eller om spelaren har en hand över 21.</p>
+            <p>Spelaren vinner om banken överstiger 21 eller om spelaren har en högre hand än banken</p>
+
+            <a href="{{ path('twentyone_init') }}">
+                <button>Play Twenty-One</button>
+            </a>
+
+        </div>
+    </div>
+{% endblock %}

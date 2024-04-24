@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Twenty-One Running{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="container">
+
+            <h1>Game running</h1>
+
+            {{ include('flash.html.twig') }}
+
+            {% if end == true %}
+            <a href="{{ path('twentyone_init') }}">
+                <button>Restart a game</button>
+            </a>
+            {% endif %}
+
+            <div class="card-container">
+                    <h2>{{ playerGame.name }}</h2>
+                    <br>
+                    {% for card in playerGame.hand %}
+                        <span class="card">{{ card }}</span>
+                    {% endfor %}
+
+                <br>
+                <br>
+
+                <span>Hand's Value:</span>
+                <span>{{ playerGame.value }}</span>
+
+                {% if end == false %}
+                <form method="post" action="">
+                    <input type="submit" name="draw" value="Get a card"
+                        onClick="this.form.action='{{ path('twentyone_draw') }}';"
+                    >
+                    <input type="submit" name="dealer" value="Stay"
+                    onClick="this.form.action='{{ path('twentyone_dealer') }}';"
+                    >
+                </form>
+                {% endif %}
+
+            </div>
+
+            <br>
+            <br>
+
+            <div class="card-container">
+                <h2>{{ dealerGame.name }}</h2>
+                <br>
+                {% for card in dealerGame.hand %}
+                    <span class="card">{{ card }}</span>
+                {% endfor %}
+
+            <br>
+            <br>
+
+            <span>Hand's Value:</span>
+            <span>{{ dealerGame.value }}</span>
+        </div>
+
+    </div>
+{% endblock %}
+
