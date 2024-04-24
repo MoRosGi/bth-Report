@@ -9,10 +9,10 @@
             <h1>PLayers hand</h1>
 
             <div class="card-container">
-                {% for game in playersGame %}
-                    <span>{{ game.name }}</span>
+                {% for player in playersGame %}
+                    <span>{{ player.name }}</span>
                     <br>
-                    {% for card in game.hand %}
+                    {% for card in player.hand %}
                     <span class="card">{{ card }}</span>
                     {% endfor %}
                     <br>

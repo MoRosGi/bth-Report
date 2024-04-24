@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Pig Game{% endblock %}
+{% block title %}Card Game{% endblock %}
 
 {% block body %}
     <div class="main">
@@ -23,7 +23,7 @@
             <p>`Card` klassen representerar ett standardkort med attribut såsom färg och värde. `CardGraphic` klassen utökar `Card` och lägger till funktionalitet för att visa kort med grafiska symboler. `CardDeck` hanterar en kortlek, antingen standard eller grafisk, och tillhandahåller metoder för att blanda, återställa, räkna eller ta bort kort. `CardHand` klassen representerar en spelares hand och tillåter att kort läggs till i handen och att information om korten i handen hämtas. `Player` representerar en spelare i spelet, med ett namn och en hand av kort lagrade i ett CardHand-objekt. `Game` hanterar hela spelet (spelare och kortlek). Den initialiseras med ett antal spelare och ett CardDeck-objekt. Metoder i klassen tillåter att dela ut kort till spelarna, spåra spelarhänder och underlätta spelinteraktioner.</p>
             <p>`CardGraphic` ärver från `Card`. `CardHand` är beroende av `Card` eller `CardGraphic` för att hantera korten i handen. `Player` är beroende av `CardHand` för att hantera spelarens hand. `CardDeck` samlar `Card` eller `CardGraphic` för att bilda en kortlek. `Game` samlar `Player` och `CardHand` för att hantera spelare och kortlek. `Game` äger CardDeck-objektet.</p>
             <h2>UML klass diagram</h2>
-            <img src="{{ asset('img/uml.png') }}" alt="me">
+            <img src="{{ asset('img/uml.png') }}" alt="uml">
         </div>
     </div>
 {% endblock %}
