@@ -8,6 +8,13 @@ use App\Card\CardHand;
 use App\Card\Game;
 use App\Card\Player;
 
+/**
+ * Main class for Twenty-One game.
+ *
+ * Encapsulate main methods for playing Twenty-One game by extending Game class.
+ *
+ * @property Player $dealer The dealer for the game.
+ */
 class GamePlay extends Game
 {
     /**
@@ -16,6 +23,13 @@ class GamePlay extends Game
     private Player $dealer;
 
 
+    /**
+     * Constructor for GamePlay class.
+     *
+     * Set $dealer as a Player object. Set a name to dealer.
+     *
+     * @param \App\Card\CardDeck $deck Deck of cards object.
+     */
     public function __construct(CardDeck $deck)
     {
         parent::__construct($deck);
@@ -24,13 +38,27 @@ class GamePlay extends Game
         $this->dealer->addName("Dealer");
     }
 
-
+    /**
+     * Return dealer object.
+     *
+     * @return Player $dealer
+     */
     public function getDealer(): object
     {
         return $this->dealer;
     }
 
-
+    /**
+     * Set a given number of cards into a given player(name)'s hand.
+     *
+     * Use Player class methods to access name and hand property.
+     * Use Deck class methods to draw cards from current deck.
+     *
+     * @param int $numCards Number of cards to deal to player.
+     * @param string $name Name of the player to deal cards to.
+     *
+     * @return void
+     */
     public function dealOnePayer(int $numCards, string $name): void
     {
         foreach ($this->players as $player) {
@@ -45,7 +73,16 @@ class GamePlay extends Game
         }
     }
 
-
+    /**
+     * Set a given number of cards into dealer's hand.
+     *
+     * Use Player class methods to access hand property.
+     * Use Deck class methods to draw cards from current deck.
+     *
+     * @param int $numCards Number of cards to deal to dealer.
+     *
+     * @return void
+     */
     public function dealDealer(int $numCards): void
     {
         $hand = $this->dealer->getPlayerHand();
@@ -58,8 +95,12 @@ class GamePlay extends Game
 
 
     /**
-    * @return array{name: string, hand: array<string>, handLetter: array<string>, value: int}
-    */
+     * Return dealers's board.
+     *
+     * Use Player class methods to get player's name, hand and value.
+     *
+     * @return array{name: string, hand: array<string>, handLetter: array<string>, value: int}
+     */
     public function getDealerGame(): array
     {
         return $this->dealer->getPlayerBoard();
@@ -67,9 +108,16 @@ class GamePlay extends Game
 
 
     /**
-    * @return array{name: string, hand: array<string>, handLetter: array<string>, value: int}
-    * @throws \Exception When player with the specified name is not found
-    */
+     * Return player's board with a given name.
+     *
+     * Use Player class methods to get player's name, hand and value.
+     *
+     * @param string $name The name of the player.
+     *
+     * @return array{name: string, hand: array<string>, handLetter: array<string>, value: int}
+     *
+     * @throws \Exception When player with the specified name is not found
+     */
     public function getPlayerBoardByName(string $name): array
     {
         foreach ($this->players as $player) {
@@ -81,7 +129,16 @@ class GamePlay extends Game
         throw new \Exception("Player '$name' not found.");
     }
 
-
+    /**
+     * Return a specific message depending of the winner.
+     *
+     * Evaluate who from dealer and player got a hand value of 21, above 21 or highest hand value.
+     *
+     * @param int $dealerValue The dealer's hand value.
+     * @param int $playerValue The player's hand value.
+     *
+     * @return string $message
+     */
     public function endGame(int $dealerValue, int $playerValue): string
     {
         $message = '';
