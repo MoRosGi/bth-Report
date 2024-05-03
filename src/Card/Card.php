@@ -34,7 +34,7 @@ class Card
         return "[" . $this->value . " " . $this->suit . "]";
     }
 
-    public function cardValue(Card $card): int
+    public static function cardValue(Card $card): int
     {
         $valueConvert = [
             'Jack' => 11,
