@@ -5,6 +5,13 @@ namespace App\Card;
 use App\Card\Card;
 use App\Card\CardGraphic;
 
+/**
+ * Class representing a deck of cards.
+ *
+ * Encapsulate methods related to deck.
+ *
+ * @property array $deck Contains all cards (Card) in the game.
+ */
 class CardDeck
 {
     /**
@@ -12,6 +19,13 @@ class CardDeck
     */
     protected array $deck;
 
+    /**
+     * Constructor for CardDeck class.
+     *
+     * Populate array $deck with instans of Card class.
+     *
+     * @param string $graphic Optional parameter to create graphic cards.
+     */
     public function __construct(string $graphic = null)
     {
         $this->deck = [];
@@ -27,20 +41,27 @@ class CardDeck
 
 
     /**
-    * @return array<Card> $deck
-    */
+     * Return $deck array.
+     * @return array<Card> $deck
+     */
     public function getDeck(): array
     {
         return $this->deck;
     }
 
-
+    /**
+     * Shuffle $deck array.
+     */
     public function shuffleDeck(): void
     {
         shuffle($this->deck);
     }
 
-
+    /**
+     * Reset the $deck array to its constructed state.
+     *
+     * @param string $graphic Optional parameter to create graphic cards.
+     */
     public function resetDeck(string $graphic = null): void
     {
         $this->__construct($graphic);
@@ -48,10 +69,12 @@ class CardDeck
 
 
     /**
-    * @param array<Card> $arr
-    * @return array<string> $values
+     * Return an array of string representing the array of Card object given.
+     *
+     * @param array<Card> $arr The array of Card object.
+     * @return array<string> $values
     */
-    public function toString(array $arr): array
+    public static function toString(array $arr): array
     {
         $values = [];
         foreach ($arr as $card) {
@@ -61,7 +84,11 @@ class CardDeck
         return $values;
     }
 
-
+    /**
+     * Count and return the number of Card object in deck.
+     *
+     * @return int Number of Card object.
+     */
     public function countDeck(): int
     {
         return count($this->deck);
@@ -69,8 +96,12 @@ class CardDeck
 
 
     /**
-    * @return array<Card> $drawCard
-    */
+     * Draw a given number of cards from $deck and return it.
+     *
+     * @param int $num Number of Card object to draw from deck.
+     *
+     * @return array<Card> $drawCard The array of Card object draw from deck.
+     */
     public function drawCard(int $num): array
     {
         $drawKeys = [];
@@ -92,8 +123,11 @@ class CardDeck
 
 
     /**
-    * @param array<Card> $arr
-    */
+     * Remove the given specific array of Card object from deck.
+     *
+     * @param array<Card> $arr The array of Card object tp remove.
+     * @return CardDeck The CardDeck object.
+     */
     public function removeFromDeck(array $arr): CardDeck
     {
         foreach ($arr as $item) {
