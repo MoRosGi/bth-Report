@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Library | Add{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="container">
+            <h1>Add a new book to the library</h1>
+
+            <div class="library-instruction">
+                <h4>Complete the form to add a book to the library collection.</h3>
+            </div>
+
+            <form action="" method="post" class="library-form">
+                <label>Title</label>
+                <input type="text" name="title" value="" required>
+
+                <label>Author</label>
+                <input type="text" name="author" value="" required>
+
+                <label>ISBN</label>
+                <input type="text" name="isbn" value="" required>
+
+                <label>Image Path</label>
+                    <input type="text" name="imagePath" value="">
+
+                <input type="submit" value="Add to the library">
+            </form>
+        </div>
+    </div>
+{% endblock %}
