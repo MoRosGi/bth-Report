@@ -72,6 +72,18 @@
                 <p class ="api-a"><a href="{{ path('game') }}">Go to game</a></p>
                 <p>JSON structure for Twenty-One game running.</p>
             </li>
+            <li>
+                <span class="code">api/library/books</span>
+                <br>
+                <p class ="api-a"><a href="{{ path('api_library') }}">Go to library</a></p>
+                <p>JSON structure showing all the books available in the library.</p>
+            </li>
+            <li>
+                <span class="code">api/library/books/{isbn}</span>
+                <br>
+                <p class ="api-a"><a href="{{ path('api_library_isbn', { 'isbn': '9780002312202' })}}">See details about a book</a></p>
+                <p>JSON structure showing detail of one book by its ISBN.</p>
+            </li>
         </ul>
         </div>
     </div>
