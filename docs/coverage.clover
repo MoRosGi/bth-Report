@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1715376523">
-  <project timestamp="1715376523">
+<coverage generated="1715458738">
+  <project timestamp="1715458738">
     <file name="/home/mogi/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="7" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="22" coveredelements="22"/>
@@ -25,7 +25,7 @@
       <line num="44" type="stmt" count="6"/>
       <line num="46" type="stmt" count="6"/>
       <line num="48" type="stmt" count="6"/>
-      <line num="49" type="stmt" count="6"/>
+      <line num="49" type="stmt" count="5"/>
       <line num="52" type="stmt" count="6"/>
       <metrics loc="55" ncloc="55" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="22" coveredelements="22"/>
     </file>
@@ -121,10 +121,10 @@
       <line num="63" type="stmt" count="8"/>
       <line num="64" type="stmt" count="5"/>
       <line num="66" type="stmt" count="5"/>
-      <line num="67" type="stmt" count="1"/>
+      <line num="67" type="stmt" count="2"/>
       <line num="71" type="stmt" count="8"/>
-      <line num="72" type="stmt" count="1"/>
-      <line num="73" type="stmt" count="1"/>
+      <line num="72" type="stmt" count="2"/>
+      <line num="73" type="stmt" count="2"/>
       <line num="76" type="stmt" count="8"/>
       <metrics loc="79" ncloc="67" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="25" coveredelements="25"/>
     </file>
