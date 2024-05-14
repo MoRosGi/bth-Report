@@ -32,7 +32,6 @@ class GamePlayExceptionTest extends TestCase
         $namePlayer = 'Martine';
 
         $this->expectException(\Exception::class);
-        $res = $this->gamePlay->getPlayerBoardByName($namePlayer);
-
+        $this->gamePlay->getPlayerBoardByName($namePlayer);
     }
 }
