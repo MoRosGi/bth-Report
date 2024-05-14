@@ -8,6 +8,8 @@ use App\Card\CardHand;
 use App\Card\Game;
 use App\Card\Player;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * Main class for Twenty-One game.
  *
@@ -93,7 +95,6 @@ class GamePlay extends Game
         }
     }
 
-
     /**
      * Return dealers's board.
      *
@@ -105,7 +106,6 @@ class GamePlay extends Game
     {
         return $this->dealer->getPlayerBoard();
     }
-
 
     /**
      * Return player's board with a given name.
@@ -126,7 +126,8 @@ class GamePlay extends Game
             }
         }
 
-        throw new \Exception("Player '$name' not found.");
+        // throw new \Exception("Player '$name' not found.");
+        throw new NotFoundHttpException("Player '$name' not found.");
     }
 
     /**
@@ -137,20 +138,22 @@ class GamePlay extends Game
      * @param int $dealerValue The dealer's hand value.
      * @param int $playerValue The player's hand value.
      *
-     * @return string $message
+     * @return string
      */
     public function endGame(int $dealerValue, int $playerValue): string
     {
-        $message = '';
-
-        if ($playerValue > 21 || $dealerValue > $playerValue && $dealerValue < 21 || $dealerValue === $playerValue || $dealerValue == 21) {
-            $message = 'Dealer won the game!';
-        }
-        if ($dealerValue > 21 || $playerValue > $dealerValue && $playerValue < 21 || $playerValue == 21) {
-            $message = 'Congrats! You won the game!';
+        if ($playerValue > 21) {
+            return 'Dealer won the game!';
         }
 
-        return $message;
+        if ($dealerValue > 21) {
+            return 'Congrats! You won the game!';
+        }
+
+        if ($playerValue > $dealerValue || $playerValue == 21) {
+            return 'Congrats! You won the game!';
+        }
+
+        return 'Dealer won the game!';
     }
-
 }

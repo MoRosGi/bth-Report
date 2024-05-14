@@ -46,7 +46,7 @@ class Game
      *
      * @param int $numPlayer Number of players in the game
      *
-     * @return void.
+     * @return void
      */
     public function addPlayers(int $numPlayer): void
     {
