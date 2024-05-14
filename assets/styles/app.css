@@ -79,6 +79,10 @@ nav ul li {
   padding: 0 1em;
 }
 
+.sub-nav {
+  padding-right: 1em;
+}
+
 /* footer */
 .footer {
   display: flex;
