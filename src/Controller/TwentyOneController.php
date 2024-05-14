@@ -86,7 +86,7 @@ class TwentyOneController extends AbstractController
         * @var GamePlay $gamePlay
         */
         $gamePlay = $session->get("gamePlay");
-        $playerValue = $gamePlay->getPlayerBoardByName('Player 1')['value'];
+        // $playerValue = $gamePlay->getPlayerBoardByName('Player 1')['value'];
 
         $gamePlay->dealOnePayer(1, "Player 1");
         $playerValue = $gamePlay->getPlayerBoardByName('Player 1')['value'];

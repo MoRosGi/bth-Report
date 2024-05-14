@@ -17,33 +17,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardGameController extends AbstractController
 {
-    #[Route("/session", name: "session")]
-    public function sessionPrint(
-        SessionInterface $session
-    ): Response {
-        $data = [
-            "session" => $session -> all()
-        ];
-
-        return $this->render('session.html.twig', $data);
-    }
-
-
-    #[Route("/session/delete", name: "session_delete")]
-    public function sessionDelete(
-        SessionInterface $session
-    ): Response {
-        $session -> clear();
-
-        $this->addFlash(
-            'notice',
-            'Session is cleared!'
-        );
-
-        return $this->redirectToRoute('session');
-    }
-
-
     #[Route("/card", name: "card_init")]
     public function init(
         SessionInterface $session
