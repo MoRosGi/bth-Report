@@ -52,23 +52,39 @@
             <p>Liksom med Phpmetrics noterade jag först Issue and Violations, vilket indikerar potentiella Code Smells. Jag identifierade sju Issues, inklusive fyra buggar på fem olika filer. De klassificeras som både Major och Minor, vilket kräver uppmärksamhet och åtgärder för att förbättra kodens kvalitet.</p>
             <img src="{{ asset('img/scrutinizer/scrutinizer_1.png') }}" alt="issue" width="200px">
             <p>Dessutom observerade jag en metod i Code-sektionen som visade hög komplexitet, vilket kan vara en indikation på behov av omstrukturering för att förbättra läsbarheten och underhållbarheten.</p>
-            <img src="{{ asset('img/scrutinizer/scrutinizer_2.png') }}" alt="issue" width="600px">
-            <img src="{{ asset('img/scrutinizer/scrutinizer_3.png') }}" alt="issue" width="600px">
+            <img src="{{ asset('img/scrutinizer/scrutinizer_2.png') }}" alt="complexity" width="600px">
+            <img src="{{ asset('img/scrutinizer/scrutinizer_3.png') }}" alt="complexity" width="600px">
             <p>Ytterligare en svaghet som jag identifierade var höga CRAP-värden för fyra metoder i min kod, som tillhör tre olika Controller-klasser. Detta tyder på att dessa metoder kan vara svåra att underhålla och kräva förbättringar för att minska komplexiteten.</p>
-            <img src="{{ asset('img/scrutinizer/scrutinizer_4.png') }}" alt="issue" width="400px">
+            <img src="{{ asset('img/scrutinizer/scrutinizer_4.png') }}" alt="crap" width="400px">
             <p>Slutligen märkte jag att min Code Coverage är låg, vilket kan vara problematiskt och kan indikera bristande testtäckning. Det är särskilt bekymmersamt att klasser med höga CRAP-värden också saknar Coverage percent. Detta kräver ökad testning och förbättringar i teststrategin för att säkerställa en bättre kodkvalitet.</p>
-            <img src="{{ asset('img/scrutinizer/scrutinizer_5.png') }}" alt="issue" width="600px">
+            <img src="{{ asset('img/scrutinizer/scrutinizer_5.png') }}" alt="coverage" width="600px">
 
             <div id="förbättringar"><h2>Förbättringar</h2></div>
-            <p><strong>Åtgärda issues och varningar:</strong> Genom att adressera identifierade problem, särskilt de som framhävts av verktyg som phpstan och Scrutinizer, kommer jag att förbättra kodens läsbarhet och underhållbarhet. Jag kommer att ta itu med varningar såsom "Unused parameter" och relaterade frågor med dokumentationskommentarer och oanvänd kod. Dessa åtgärder förväntas resultera i högre Code Quality-värden i Scrutinizer, vilket indikerar en övergripande förbättring av kodkvaliteten.</p>
-            
-            <p><strong>Minska komplexitet:</strong> Jag kommer att fokusera på att minska komplexiteten i koden, särskilt i klasser som ApiController och GamePlay. Genom att minska Cyclomatic Complexity kommer jag att förbättra läsbarheten och underhållbarheten. Detta förväntas resultera i högre Maintainability Index för dessa klasser och därigenom förbättra kvaliteten på koden.</p>
+            <p><strong>1. Åtgärda issues och varningar:</strong>Genom att adressera identifierade problem, särskilt de som framhävts av verktyg som phpstan och Scrutinizer, kommer jag att förbättra kodens läsbarhet och underhållbarhet. Jag kommer att ta itu med varningar såsom "Unused parameter" och relaterade frågor med dokumentationskommentarer och oanvänd kod. Dessa åtgärder förväntas resultera i högre Code Quality-värden i Scrutinizer, vilket indikerar en övergripande förbättring av kodkvaliteten.</p>
+            <p><strong>Före åtgärder:</strong>Scrutinizer Code Quality-värden: 9.96.</p>
+            <img src="{{ asset('img/analyze/issues_varning.png') }}" alt="varning" width="900px">
+            <p><strong>Efter åtgärder:</strong>Scrutinizer Code Quality-värden: 10. Issue relaterad till konfigurationsfilen php fixer och en php-docs passerar phpstan.</p>
+            <img src="{{ asset('img/analyze/issues_varning_after.png') }}" alt="varning" width="900px">
 
-            <p><strong>Förbättra Single Responsibility och minska LCOM-värden:</strong> Jag kommer att arbeta med att förbättra Single Responsibility och minska höga LCOM-värden, särskilt i klasser som ApiController. Genom att separera ansvarsområden och förbättra kodens struktur förväntar jag mig att minska antalet Violations/Errors och potentiella Code Smells. Detta kommer ytterligare öka kodkvaliteten och göra koden mer robust och lätt att underhålla.</p>
+            <p><strong>2. Minska komplexitet:</strong>Jag kommer att fokusera på att minska komplexiteten i koden, särskilt i klasser som ApiController och GamePlay. Genom att minska Cyclomatic Complexity kommer jag att förbättra läsbarheten och underhållbarheten. Detta förväntas resultera i högre Maintainability Index för dessa klasser och därigenom förbättra kvaliteten på koden.</p>
+            <p><strong>Före åtgärder:</strong>Genomsnittlig Cyclomatic Complexity: 4.5, högsta värde per klass: 16.</p>
+            <img src="{{ asset('img/analyze/complexity_index.png') }}" alt="complexity" width="1000px">
+            <p><strong>Efter åtgärder:</strong>Genomsnittlig Cyclomatic Complexity: 3.74, högsta värde per klass: 11. Cyclomatic Complexity för endGame-funktionen i Scrutinizer minskade från 10 till 5. Detta åstadkoms genom att ytterligare bryta ner klasserna, vilket ledde till högre Maintainability Index per klass.</p>
+            <img src="{{ asset('img/analyze/complexity_index_after.png') }}" alt="complexity" width="1000px">
+
+            <p><strong>3. Förbättra Single Responsibility och minska LCOM-värden:</strong>Jag kommer att arbeta med att förbättra Single Responsibility och minska höga LCOM-värden, särskilt i klasser som ApiController. Genom att separera ansvarsområden och förbättra kodens struktur förväntar jag mig att minska antalet Violations/Errors och potentiella Code Smells. Detta kommer ytterligare öka kodkvaliteten och göra koden mer robust och lätt att underhålla.</p>
+            <p><strong>Före åtgärder:</strong>Genomsnittlig LCOM: 1.95, högsta värde: 9.</p>
+            <img src="{{ asset('img/analyze/lcom.png') }}" alt="lcom" width="1000px">
+
+            <p><strong>Efter åtgärder:</strong>Genomsnittlig LCOM: 1.63, högsta värde: 5. Två fel har tagits bort och antalet Violations har minskats.</p>
+            <img src="{{ asset('img/analyze/lcom_after.png') }}" alt="lcom" width="1000px">
 
             <p>Jag har valt att inte öka testtäckningen eftersom jag redan uppnår 100% täckning för de centrala klasserna.</p>
 
             <div id="diskussion"><h2>Diskussion</h2></div>
+            <p>Efter att ha arbetat med Scrutinizer och phpmetrics är det tydligt att aktivt arbete med kodkvalitet och "clean code" är möjligt genom att använda dessa verktyg och följa etablerade kodningsriktlinjer. Genom att identifiera och åtgärda specifika problemområden kan man successivt förbättra kodkvaliteten och därigenom öka systemets stabilitet och underhållbarhet.</p>
+            <p>Fördelarna inkluderar förbättrad läsbarhet, lägre risk för buggar och enklare underhåll, vilket kan öka produktiviteten och minska kostnaderna på lång sikt. Å andra sidan kan fokuset på kodkvalitet ibland leda till ökad utvecklingstid och komplexitet, särskilt om för mycket tid ägnas åt optimering av mindre relevanta delar av koden.</p>
+            <p>En annan möjlighet för att arbeta mot "clean code" är att implementera kodgranskningsprocesser där teamet regelbundet granskar och ger feedback på varandras kod för att säkerställa överensstämmelse med kodningsstandarder och bästa praxis. Dessutom kan kontinuerlig utbildning och kunskapsdelning inom teamet bidra till att öka medvetenheten och förståelsen för vikten av kodkvalitet.</p>
         </div>
     </div>
 {% endblock %}
