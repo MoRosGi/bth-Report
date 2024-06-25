@@ -4,31 +4,29 @@
 
 {% block body %}
     <div class="main">
-        <div class="container">
-            <h1>Update book {{ book.getId }} in the library</h1>
+        <h1>Update book {{ book.getId }} in the library</h1>
 
-            <div class="library-instruction">
-                <h4>Edit informations in the form and click save to update the book.</h3>
-            </div>
-
-            <form action="" method="post" class="library-form">
-                <label>Id</label>
-                <input type="text" name="title" value="{{ book.getId }}" readonly>
-
-                <label>Title</label>
-                <input type="text" name="title" value="{{ book.getTitle }}">
-
-                <label>Author</label>
-                <input type="text" name="author" value="{{ book.getAuthor }}">
-
-                <label>ISBN</label>
-                <input type="text" name="isbn" value="{{ book.getIsbn }}">
-
-                <label>Image Path</label>
-                    <input type="text" name="imagePath" value="{{ book.getImagePath }}">
-
-                <input type="submit" value="Save">
-            </form>
+        <div class="library-instruction">
+            <h4>Edit informations in the form and click save to update the book.</h3>
         </div>
+
+        <form action="" method="post" class="library-form">
+            <label>Id</label>
+            <input type="text" name="title" value="{{ book.getId }}" readonly>
+
+            <label>Title</label>
+            <input type="text" name="title" value="{{ book.getTitle }}">
+
+            <label>Author</label>
+            <input type="text" name="author" value="{{ book.getAuthor }}">
+
+            <label>ISBN</label>
+            <input type="text" name="isbn" value="{{ book.getIsbn }}">
+
+            <label>Image Path</label>
+                <input type="text" name="imagePath" value="{{ book.getImagePath }}">
+
+            <input type="submit" value="Save">
+        </form>
     </div>
 {% endblock %}

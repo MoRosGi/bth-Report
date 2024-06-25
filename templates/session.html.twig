@@ -4,18 +4,16 @@
 
 {% block body %}
     <div class="main">
-        <div class="container">
-            <h1>Session</h1>
-    
-            <h2>Rensa Session:</h2>
-    
-            {{ include('flash.html.twig') }}
-    
-            <p><a href="{{ path('session_delete') }}">Clear Session content</a></p>
+        <h1>Session</h1>
 
-            <h2>Session innehållet:</h2>
+        <h2>Rensa Session:</h2>
 
-            <p>{{ dump(session) }}</p>
-        </div>
+        {{ include('flash.html.twig') }}
+
+        <p><a href="{{ path('session_delete') }}">Clear Session content</a></p>
+
+        <h2>Session innehållet:</h2>
+
+        <p>{{ dump(session) }}</p>
     </div>
 {% endblock %}

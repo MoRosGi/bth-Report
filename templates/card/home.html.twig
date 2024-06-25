@@ -4,26 +4,24 @@
 
 {% block body %}
     <div class="main">
-        <div class="container">
-            <h1>Welcome to Card Game!</h1>
+        <h1>Welcome to Card Game!</h1>
 
-            <h2><a href="{{ path('session') }}">Go to Session content</a></h2>
+        <h2><a href="{{ path('session') }}">Go to Session content</a></h2>
 
-            <h2>Routes for Card Game:</h2>
-            <ul>
-                <li><a href="{{ path('card_deck') }}">Card Deck</a></li>
-                <li><a href="{{ path('card_deck_shuffle') }}">Card Deck Shuffle</a></li>
-                <li><a href="{{ path('card_deck_draw') }}">Card Deck Draw</a></li>
-                <li><a href="{{ path('card_deck_draw_many', {num: 0}) }}">Card Deck Draw Many</a></li>
-                <li><a href="{{ path('card_deal', {players: 0, cards: 0}) }}">Game Players Deal</a></li>
-            </ul>
+        <h2>Routes for Card Game:</h2>
+        <ul>
+            <li><a href="{{ path('card_deck') }}">Card Deck</a></li>
+            <li><a href="{{ path('card_deck_shuffle') }}">Card Deck Shuffle</a></li>
+            <li><a href="{{ path('card_deck_draw') }}">Card Deck Draw</a></li>
+            <li><a href="{{ path('card_deck_draw_many', {num: 0}) }}">Card Deck Draw Many</a></li>
+            <li><a href="{{ path('card_deal', {players: 0, cards: 0}) }}">Game Players Deal</a></li>
+        </ul>
 
-            <h2>Klasser Struktur</h2>
-            <p>Koden består av sex klasser: `Card`, `CardGraphic`, `CardDeck`, `CardHand`, `Player` och `Game`.</p>
-            <p>`Card` klassen representerar ett standardkort med attribut såsom färg och värde. `CardGraphic` klassen utökar `Card` och lägger till funktionalitet för att visa kort med grafiska symboler. `CardDeck` hanterar en kortlek, antingen standard eller grafisk, och tillhandahåller metoder för att blanda, återställa, räkna eller ta bort kort. `CardHand` klassen representerar en spelares hand och tillåter att kort läggs till i handen och att information om korten i handen hämtas. `Player` representerar en spelare i spelet, med ett namn och en hand av kort lagrade i ett CardHand-objekt. `Game` hanterar hela spelet (spelare och kortlek). Den initialiseras med ett antal spelare och ett CardDeck-objekt. Metoder i klassen tillåter att dela ut kort till spelarna, spåra spelarhänder och underlätta spelinteraktioner.</p>
-            <p>`CardGraphic` ärver från `Card`. `CardHand` är beroende av `Card` eller `CardGraphic` för att hantera korten i handen. `Player` är beroende av `CardHand` för att hantera spelarens hand. `CardDeck` samlar `Card` eller `CardGraphic` för att bilda en kortlek. `Game` samlar `Player` och `CardHand` för att hantera spelare och kortlek. `Game` äger CardDeck-objektet.</p>
-            <h2>UML klass diagram</h2>
-            <img src="{{ asset('img/uml.png') }}" alt="uml">
-        </div>
+        <h2>Klasser Struktur</h2>
+        <p>Koden består av sex klasser: `Card`, `CardGraphic`, `CardDeck`, `CardHand`, `Player` och `Game`.</p>
+        <p>`Card` klassen representerar ett standardkort med attribut såsom färg och värde. `CardGraphic` klassen utökar `Card` och lägger till funktionalitet för att visa kort med grafiska symboler. `CardDeck` hanterar en kortlek, antingen standard eller grafisk, och tillhandahåller metoder för att blanda, återställa, räkna eller ta bort kort. `CardHand` klassen representerar en spelares hand och tillåter att kort läggs till i handen och att information om korten i handen hämtas. `Player` representerar en spelare i spelet, med ett namn och en hand av kort lagrade i ett CardHand-objekt. `Game` hanterar hela spelet (spelare och kortlek). Den initialiseras med ett antal spelare och ett CardDeck-objekt. Metoder i klassen tillåter att dela ut kort till spelarna, spåra spelarhänder och underlätta spelinteraktioner.</p>
+        <p>`CardGraphic` ärver från `Card`. `CardHand` är beroende av `Card` eller `CardGraphic` för att hantera korten i handen. `Player` är beroende av `CardHand` för att hantera spelarens hand. `CardDeck` samlar `Card` eller `CardGraphic` för att bilda en kortlek. `Game` samlar `Player` och `CardHand` för att hantera spelare och kortlek. `Game` äger CardDeck-objektet.</p>
+        <h2>UML klass diagram</h2>
+        <img src="{{ asset('img/uml.png') }}" alt="uml">
     </div>
 {% endblock %}

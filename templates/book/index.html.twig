@@ -4,32 +4,29 @@
 
 {% block body %}
     <div class="main">
-        <div class="container">
-            <h1>Welcome to our library!</h1>
+        <h1>Welcome to our library!</h1>
 
-            <div class="library-instruction">
-                <h4>Discover our collection and explore the library by using the navigation options provided.</h3>
-            </div>
-
-            <a href="{{path("library_add_get") }}"><button class="library-btn-special">Add a book to the collection</button></a>
-
-            {{ include('flash.html.twig') }}
-
-            <table class="library-table">
-                <tbody>
-                {% for book in books %}
-                    <tr>
-                        <td>{{ book.getTitle|e }}<br><label>by {{ book.getAuthor|e }}</label></td>
-                        <td><a href="{{path("book_by_id", { 'id': book.getId })}}"><button class="library-btn">See details</button></a></td>
-                        <td><a href="{{path("library_update_get", { 'id': book.getId })}}"><button class="library-btn">Update book</button></a></td>
-                        <td><a href="{{path("book_delete_get", { 'id': book.getId })}}"><button class="library-btn">Delete book</button></a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-            <a href="{{path("library_reset")}}"><button class="library-btn-special">Reset library database</button></a>
-
+        <div class="library-instruction">
+            <h4>Discover our collection and explore the library by using the navigation options provided.</h3>
         </div>
+
+        <a href="{{path("library_add_get") }}"><button class="library-btn-special">Add a book to the collection</button></a>
+
+        {{ include('flash.html.twig') }}
+
+        <table class="library-table">
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.getTitle|e }}<br><label>by {{ book.getAuthor|e }}</label></td>
+                    <td><a href="{{path("book_by_id", { 'id': book.getId })}}"><button class="library-btn">See details</button></a></td>
+                    <td><a href="{{path("library_update_get", { 'id': book.getId })}}"><button class="library-btn">Update book</button></a></td>
+                    <td><a href="{{path("book_delete_get", { 'id': book.getId })}}"><button class="library-btn">Delete book</button></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{path("library_reset")}}"><button class="library-btn-special">Reset library database</button></a>
     </div>
 {% endblock %}

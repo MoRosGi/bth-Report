@@ -4,32 +4,30 @@
 
 {% block body %}
     <div class="main">
-        <div class="container">
-            <h1>Book with id: {{ book.getId }} awaiting your exploration.</h1>
-            <table class="library-table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>ISBN</th>
-                        <th>Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ book.getId }}</td>
-                        <td>{{ book.getTitle }}</td>
-                        <td>{{ book.getAuthor }}</td>
-                        <td>{{ book.getIsbn }}</td>
-                        {% if book.getImagePath|length != 0%}
-                            <td><img src="{{ book.getImagePath }}" width="150" alt="Image of {{ book.getTitle }}"></td>
-                            {% else %}
-                            <td>No image available yet</td>
-                        {% endif %}
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <h1>Book with id: {{ book.getId }} awaiting your exploration.</h1>
+        <table class="library-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ book.getId }}</td>
+                    <td>{{ book.getTitle }}</td>
+                    <td>{{ book.getAuthor }}</td>
+                    <td>{{ book.getIsbn }}</td>
+                    {% if book.getImagePath|length != 0%}
+                        <td><img src="{{ book.getImagePath }}" width="150" alt="Image of {{ book.getTitle }}"></td>
+                        {% else %}
+                        <td>No image available yet</td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        </table>
     </div>
 {% endblock %}

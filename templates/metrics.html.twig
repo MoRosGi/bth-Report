@@ -4,87 +4,85 @@
 
 {% block body %}
     <div class="main">
-        <div class="container">
-            <h1>Metrics Report</h1>
+        <h1>Metrics Report</h1>
 
-            <span class="sub-nav"><a href="#introduktion">Introduktion</a></span>
-            <span class="sub-nav"><a href="#phpmetrics">Phpmetrics</a></span>
-            <span class="sub-nav"><a href="#scrutinizer">Scrutinizer</a></span>
-            <span class="sub-nav"><a href="#förbättringar">Förbättringar</a></span>
-            <span class="sub-nav"><a href="#diskussion">Diskussion</a></span>
+        <span class="sub-nav"><a href="#introduktion">Introduktion</a></span>
+        <span class="sub-nav"><a href="#phpmetrics">Phpmetrics</a></span>
+        <span class="sub-nav"><a href="#scrutinizer">Scrutinizer</a></span>
+        <span class="sub-nav"><a href="#förbättringar">Förbättringar</a></span>
+        <span class="sub-nav"><a href="#diskussion">Diskussion</a></span>
 
-            <div id="introduktion"><h2>Introduktion</h2></div>
-            <p>Codestyle är en uppsättning riktlinjer för att formatera och strukturera kod korrekt, inklusive variabelnamn, indentering och stilrelaterade konventioner. Det påverkar kodens läsbarhet, underhållbarhet och felhantering, vilket i sin tur påverkar kodens övergripande kvalitet. En vanlig mätning av codestyle är antalet stilbrott per rad, som kan utvärderas med verktyg som phpmd och phpstan.</p>
-            <p>Codecoverage mäter hur mycket av koden som täcks av testfall. En hög codecoverage indikerar att tillräckligt mycket kod testas för att minska risken för buggar och förbättra kodens hållbarhet. Min kod har en codecoverage på 24%, vilket är relativt lågt och kan indikera att fler testfall behövs för att förbättra kodkvaliteten.</p>
-            <p>Complexity mäter svårighetsgraden för att förstå och underhålla koden. Cylomatisk komplexitet, till exempel, mäter antalet möjliga vägar genom en funktion. Ju högre komplexitet, desto svårare blir det att förstå och ändra koden utan att införa fel, vilket minskar kodkvaliteten.</p>
-            <p>Cohesion refererar till sammanhållningen av element i en modul. En hög sammanhållning (låg LCOM) indikerar att alla delar av komponenten är starkt relaterade till dess syfte, medan en låg sammanhållning (hög LCOM) indikerar en modul med orelaterade delar, vilket minskar kodens läsbarhet och hållbarhet.</p>
-            <p>Coupling beskriver graden av beroende mellan olika delar av koden. En låg koppling är önskvärd för att öka kodens återanvändbarhet och underhållbarhet, vilket i sin tur förbättrar kodkvaliteten. I min kod är Card och CardGraphics starkt kopplade, vilket skulle kunna minskas genom att använda en abstrakt klass eller ett gränssnitt för att öka återanvändningen och därmed kvaliteten i koden.</p>
-            <p>CRAP metrics kombinerar kodkomplexitet med kodtäckning för att identifiera riskfyllda delar av koden som behöver förbättras. Detta hjälper till att avgöra om det behövs ökad testtäckning för funktioner med hög komplexitet, vilket direkt påverkar kodkvaliteten genom att minska risken för buggar.</p>
+        <div id="introduktion"><h2>Introduktion</h2></div>
+        <p>Codestyle är en uppsättning riktlinjer för att formatera och strukturera kod korrekt, inklusive variabelnamn, indentering och stilrelaterade konventioner. Det påverkar kodens läsbarhet, underhållbarhet och felhantering, vilket i sin tur påverkar kodens övergripande kvalitet. En vanlig mätning av codestyle är antalet stilbrott per rad, som kan utvärderas med verktyg som phpmd och phpstan.</p>
+        <p>Codecoverage mäter hur mycket av koden som täcks av testfall. En hög codecoverage indikerar att tillräckligt mycket kod testas för att minska risken för buggar och förbättra kodens hållbarhet. Min kod har en codecoverage på 24%, vilket är relativt lågt och kan indikera att fler testfall behövs för att förbättra kodkvaliteten.</p>
+        <p>Complexity mäter svårighetsgraden för att förstå och underhålla koden. Cylomatisk komplexitet, till exempel, mäter antalet möjliga vägar genom en funktion. Ju högre komplexitet, desto svårare blir det att förstå och ändra koden utan att införa fel, vilket minskar kodkvaliteten.</p>
+        <p>Cohesion refererar till sammanhållningen av element i en modul. En hög sammanhållning (låg LCOM) indikerar att alla delar av komponenten är starkt relaterade till dess syfte, medan en låg sammanhållning (hög LCOM) indikerar en modul med orelaterade delar, vilket minskar kodens läsbarhet och hållbarhet.</p>
+        <p>Coupling beskriver graden av beroende mellan olika delar av koden. En låg koppling är önskvärd för att öka kodens återanvändbarhet och underhållbarhet, vilket i sin tur förbättrar kodkvaliteten. I min kod är Card och CardGraphics starkt kopplade, vilket skulle kunna minskas genom att använda en abstrakt klass eller ett gränssnitt för att öka återanvändningen och därmed kvaliteten i koden.</p>
+        <p>CRAP metrics kombinerar kodkomplexitet med kodtäckning för att identifiera riskfyllda delar av koden som behöver förbättras. Detta hjälper till att avgöra om det behövs ökad testtäckning för funktioner med hög komplexitet, vilket direkt påverkar kodkvaliteten genom att minska risken för buggar.</p>
 
-            <div id="phpmetrics"><h2>Phpmetrics</h2></div>
-            <p>När jag granskade Phpmetrics-rapporten för min kod upptäckte jag flera svagheter som kräver åtgärd.</p>
-            <p>För det första noterade jag att fyra av mina klasser har ett Maintainability Index under 65, vilket indikerar en betydande brist på underhållbarhet. Detta kräver uppmärksamhet och åtgärder för att förbättra kodens hanterbarhet.</p>
-            <img src="{{ asset('img/phpmetrics/phpmetrics_1.png') }}" alt="maintainability" width="300px">
-            <p>En annan aspekt som jag betraktade var Complexity, särskilt Cyclomatic complexity. Jag identifierade tre klasser med ett Cyclomatic Complexity-värde mellan 10 och 20. Även om detta kan vara acceptabelt beroende på kontext (antal tester), kan det vara problematisk att dessa klasser också har låga Maintainability Index-värden. Detta indikerar en möjlig brist på struktur och kan kräva refaktorisering.</p>
-            <img src="{{ asset('img/phpmetrics/phpmetrics_2.png') }}" alt="complexity" width="780px">
-            <p>En tredje svaghet är kopplad till Maintainability genom Code Size och Volume. De klasser som visar låg underhållbarhet har också höga värden av kodvolym och LLOC. Detta indikerar komplexa och potentiellt svåra att underhålla delar av koden.</p>
-            <img src="{{ asset('img/phpmetrics/phpmetrics_3.png') }}" alt="volume" width="780px">
-            <p>Ytterligare en svaghet som jag observerade var relaterad till Issue och Violations, vilket kan indikera förekomsten av potentiella Code smells och buggar. Det är tydligt att vissa delar av min kod inte följer designprinciper och kan behöva omstrukturering.</p>
-            <img src="{{ asset('img/phpmetrics/phpmetrics_4.png') }}" alt="issue" width="780px">
-            <img src="{{ asset('img/phpmetrics/phpmetrics_5.png') }}" alt="violations" width="780px">
-            <p>En annan aspekt som jag granskade var Cohesion, som är nära kopplad till tidigare nämnda designprinciper. Jag noterade att vissa klasser har hög LCOM-värden, vilket tyder på bristande sammanhållning och kan vara en indikation på designfel.</p>
-            <img src="{{ asset('img/phpmetrics/phpmetrics_6.png') }}" alt="cohesion" width="780px">
-            <p>Slutligen identifierade jag problem med Coupling i min kod. Vissa klasser visar hög Afferent/Efferent coupling, vilket kan göra koden svårare att underhålla och modifiera [7].</p>
-            <img src="{{ asset('img/phpmetrics/phpmetrics_7.png') }}" alt="coupling" width="780px">
+        <div id="phpmetrics"><h2>Phpmetrics</h2></div>
+        <p>När jag granskade Phpmetrics-rapporten för min kod upptäckte jag flera svagheter som kräver åtgärd.</p>
+        <p>För det första noterade jag att fyra av mina klasser har ett Maintainability Index under 65, vilket indikerar en betydande brist på underhållbarhet. Detta kräver uppmärksamhet och åtgärder för att förbättra kodens hanterbarhet.</p>
+        <img src="{{ asset('img/phpmetrics/phpmetrics_1.png') }}" alt="maintainability" width="300px">
+        <p>En annan aspekt som jag betraktade var Complexity, särskilt Cyclomatic complexity. Jag identifierade tre klasser med ett Cyclomatic Complexity-värde mellan 10 och 20. Även om detta kan vara acceptabelt beroende på kontext (antal tester), kan det vara problematisk att dessa klasser också har låga Maintainability Index-värden. Detta indikerar en möjlig brist på struktur och kan kräva refaktorisering.</p>
+        <img src="{{ asset('img/phpmetrics/phpmetrics_2.png') }}" alt="complexity" width="780px">
+        <p>En tredje svaghet är kopplad till Maintainability genom Code Size och Volume. De klasser som visar låg underhållbarhet har också höga värden av kodvolym och LLOC. Detta indikerar komplexa och potentiellt svåra att underhålla delar av koden.</p>
+        <img src="{{ asset('img/phpmetrics/phpmetrics_3.png') }}" alt="volume" width="780px">
+        <p>Ytterligare en svaghet som jag observerade var relaterad till Issue och Violations, vilket kan indikera förekomsten av potentiella Code smells och buggar. Det är tydligt att vissa delar av min kod inte följer designprinciper och kan behöva omstrukturering.</p>
+        <img src="{{ asset('img/phpmetrics/phpmetrics_4.png') }}" alt="issue" width="780px">
+        <img src="{{ asset('img/phpmetrics/phpmetrics_5.png') }}" alt="violations" width="780px">
+        <p>En annan aspekt som jag granskade var Cohesion, som är nära kopplad till tidigare nämnda designprinciper. Jag noterade att vissa klasser har hög LCOM-värden, vilket tyder på bristande sammanhållning och kan vara en indikation på designfel.</p>
+        <img src="{{ asset('img/phpmetrics/phpmetrics_6.png') }}" alt="cohesion" width="780px">
+        <p>Slutligen identifierade jag problem med Coupling i min kod. Vissa klasser visar hög Afferent/Efferent coupling, vilket kan göra koden svårare att underhålla och modifiera [7].</p>
+        <img src="{{ asset('img/phpmetrics/phpmetrics_7.png') }}" alt="coupling" width="780px">
 
-            <div id="scrutinizer"><h2>Scrutinizer</h2></div>
-            <a href="https://scrutinizer-ci.com/g/MoRosGi/bth-Report/?branch=main">
-                <img src="{{ 'https://scrutinizer-ci.com/g/MoRosGi/bth-Report/badges/quality-score.png?b=main' }}" width="120" alt="scrutinizer">
-            </a>
-            <a href="https://scrutinizer-ci.com/g/MoRosGi/bth-Report/?branch=main">
-                <img src="{{ 'https://scrutinizer-ci.com/g/mosbth/mvc-2024-scrutinizer/badges/coverage.png?b=main' }}" width="120" alt="coverage">
-            </a>
-            <a href="https://scrutinizer-ci.com/g/MoRosGi/bth-Report/build-status/main">
-                <img src="{{ 'https://scrutinizer-ci.com/g/MoRosGi/bth-Report/badges/build.png?b=main' }}" width="110" alt="build">
-            </a>
+        <div id="scrutinizer"><h2>Scrutinizer</h2></div>
+        <a href="https://scrutinizer-ci.com/g/MoRosGi/bth-Report/?branch=main">
+            <img src="{{ 'https://scrutinizer-ci.com/g/MoRosGi/bth-Report/badges/quality-score.png?b=main' }}" width="120" alt="scrutinizer">
+        </a>
+        <a href="https://scrutinizer-ci.com/g/MoRosGi/bth-Report/?branch=main">
+            <img src="{{ 'https://scrutinizer-ci.com/g/mosbth/mvc-2024-scrutinizer/badges/coverage.png?b=main' }}" width="120" alt="coverage">
+        </a>
+        <a href="https://scrutinizer-ci.com/g/MoRosGi/bth-Report/build-status/main">
+            <img src="{{ 'https://scrutinizer-ci.com/g/MoRosGi/bth-Report/badges/build.png?b=main' }}" width="110" alt="build">
+        </a>
 
-            <p>Efter att ha genomgått Scrutinizer-rapporten för min kod blev det tydligt att det finns betydande svagheter som behöver åtgärdas.</p>
-            <p>Liksom med Phpmetrics noterade jag först Issue and Violations, vilket indikerar potentiella Code Smells. Jag identifierade sju Issues, inklusive fyra buggar på fem olika filer. De klassificeras som både Major och Minor, vilket kräver uppmärksamhet och åtgärder för att förbättra kodens kvalitet.</p>
-            <img src="{{ asset('img/scrutinizer/scrutinizer_1.png') }}" alt="issue" width="200px">
-            <p>Dessutom observerade jag en metod i Code-sektionen som visade hög komplexitet, vilket kan vara en indikation på behov av omstrukturering för att förbättra läsbarheten och underhållbarheten.</p>
-            <img src="{{ asset('img/scrutinizer/scrutinizer_2.png') }}" alt="complexity" width="600px">
-            <img src="{{ asset('img/scrutinizer/scrutinizer_3.png') }}" alt="complexity" width="600px">
-            <p>Ytterligare en svaghet som jag identifierade var höga CRAP-värden för fyra metoder i min kod, som tillhör tre olika Controller-klasser. Detta tyder på att dessa metoder kan vara svåra att underhålla och kräva förbättringar för att minska komplexiteten.</p>
-            <img src="{{ asset('img/scrutinizer/scrutinizer_4.png') }}" alt="crap" width="400px">
-            <p>Slutligen märkte jag att min Code Coverage är låg, vilket kan vara problematiskt och kan indikera bristande testtäckning. Det är särskilt bekymmersamt att klasser med höga CRAP-värden också saknar Coverage percent. Detta kräver ökad testning och förbättringar i teststrategin för att säkerställa en bättre kodkvalitet.</p>
-            <img src="{{ asset('img/scrutinizer/scrutinizer_5.png') }}" alt="coverage" width="600px">
+        <p>Efter att ha genomgått Scrutinizer-rapporten för min kod blev det tydligt att det finns betydande svagheter som behöver åtgärdas.</p>
+        <p>Liksom med Phpmetrics noterade jag först Issue and Violations, vilket indikerar potentiella Code Smells. Jag identifierade sju Issues, inklusive fyra buggar på fem olika filer. De klassificeras som både Major och Minor, vilket kräver uppmärksamhet och åtgärder för att förbättra kodens kvalitet.</p>
+        <img src="{{ asset('img/scrutinizer/scrutinizer_1.png') }}" alt="issue" width="200px">
+        <p>Dessutom observerade jag en metod i Code-sektionen som visade hög komplexitet, vilket kan vara en indikation på behov av omstrukturering för att förbättra läsbarheten och underhållbarheten.</p>
+        <img src="{{ asset('img/scrutinizer/scrutinizer_2.png') }}" alt="complexity" width="600px">
+        <img src="{{ asset('img/scrutinizer/scrutinizer_3.png') }}" alt="complexity" width="600px">
+        <p>Ytterligare en svaghet som jag identifierade var höga CRAP-värden för fyra metoder i min kod, som tillhör tre olika Controller-klasser. Detta tyder på att dessa metoder kan vara svåra att underhålla och kräva förbättringar för att minska komplexiteten.</p>
+        <img src="{{ asset('img/scrutinizer/scrutinizer_4.png') }}" alt="crap" width="400px">
+        <p>Slutligen märkte jag att min Code Coverage är låg, vilket kan vara problematiskt och kan indikera bristande testtäckning. Det är särskilt bekymmersamt att klasser med höga CRAP-värden också saknar Coverage percent. Detta kräver ökad testning och förbättringar i teststrategin för att säkerställa en bättre kodkvalitet.</p>
+        <img src="{{ asset('img/scrutinizer/scrutinizer_5.png') }}" alt="coverage" width="600px">
 
-            <div id="förbättringar"><h2>Förbättringar</h2></div>
-            <p><strong>1. Åtgärda issues och varningar:</strong>Genom att adressera identifierade problem, särskilt de som framhävts av verktyg som phpstan och Scrutinizer, kommer jag att förbättra kodens läsbarhet och underhållbarhet. Jag kommer att ta itu med varningar såsom "Unused parameter" och relaterade frågor med dokumentationskommentarer och oanvänd kod. Dessa åtgärder förväntas resultera i högre Code Quality-värden i Scrutinizer, vilket indikerar en övergripande förbättring av kodkvaliteten.</p>
-            <p><strong>Före åtgärder:</strong>Scrutinizer Code Quality-värden: 9.96.</p>
-            <img src="{{ asset('img/analyze/issues_varning.png') }}" alt="varning" width="900px">
-            <p><strong>Efter åtgärder:</strong>Scrutinizer Code Quality-värden: 10. Issue relaterad till konfigurationsfilen php fixer och en php-docs passerar phpstan.</p>
-            <img src="{{ asset('img/analyze/issues_varning_after.png') }}" alt="varning" width="900px">
+        <div id="förbättringar"><h2>Förbättringar</h2></div>
+        <p><strong>1. Åtgärda issues och varningar:</strong>Genom att adressera identifierade problem, särskilt de som framhävts av verktyg som phpstan och Scrutinizer, kommer jag att förbättra kodens läsbarhet och underhållbarhet. Jag kommer att ta itu med varningar såsom "Unused parameter" och relaterade frågor med dokumentationskommentarer och oanvänd kod. Dessa åtgärder förväntas resultera i högre Code Quality-värden i Scrutinizer, vilket indikerar en övergripande förbättring av kodkvaliteten.</p>
+        <p><strong>Före åtgärder:</strong>Scrutinizer Code Quality-värden: 9.96.</p>
+        <img src="{{ asset('img/analyze/issues_varning.png') }}" alt="varning" width="900px">
+        <p><strong>Efter åtgärder:</strong>Scrutinizer Code Quality-värden: 10. Issue relaterad till konfigurationsfilen php fixer och en php-docs passerar phpstan.</p>
+        <img src="{{ asset('img/analyze/issues_varning_after.png') }}" alt="varning" width="900px">
 
-            <p><strong>2. Minska komplexitet:</strong>Jag kommer att fokusera på att minska komplexiteten i koden, särskilt i klasser som ApiController och GamePlay. Genom att minska Cyclomatic Complexity kommer jag att förbättra läsbarheten och underhållbarheten. Detta förväntas resultera i högre Maintainability Index för dessa klasser och därigenom förbättra kvaliteten på koden.</p>
-            <p><strong>Före åtgärder:</strong>Genomsnittlig Cyclomatic Complexity: 4.5, högsta värde per klass: 16.</p>
-            <img src="{{ asset('img/analyze/complexity_index.png') }}" alt="complexity" width="1000px">
-            <p><strong>Efter åtgärder:</strong>Genomsnittlig Cyclomatic Complexity: 3.74, högsta värde per klass: 11. Cyclomatic Complexity för endGame-funktionen i Scrutinizer minskade från 10 till 5. Detta åstadkoms genom att ytterligare bryta ner klasserna, vilket ledde till högre Maintainability Index per klass.</p>
-            <img src="{{ asset('img/analyze/complexity_index_after.png') }}" alt="complexity" width="1000px">
+        <p><strong>2. Minska komplexitet:</strong>Jag kommer att fokusera på att minska komplexiteten i koden, särskilt i klasser som ApiController och GamePlay. Genom att minska Cyclomatic Complexity kommer jag att förbättra läsbarheten och underhållbarheten. Detta förväntas resultera i högre Maintainability Index för dessa klasser och därigenom förbättra kvaliteten på koden.</p>
+        <p><strong>Före åtgärder:</strong>Genomsnittlig Cyclomatic Complexity: 4.5, högsta värde per klass: 16.</p>
+        <img src="{{ asset('img/analyze/complexity_index.png') }}" alt="complexity" width="1000px">
+        <p><strong>Efter åtgärder:</strong>Genomsnittlig Cyclomatic Complexity: 3.74, högsta värde per klass: 11. Cyclomatic Complexity för endGame-funktionen i Scrutinizer minskade från 10 till 5. Detta åstadkoms genom att ytterligare bryta ner klasserna, vilket ledde till högre Maintainability Index per klass.</p>
+        <img src="{{ asset('img/analyze/complexity_index_after.png') }}" alt="complexity" width="1000px">
 
-            <p><strong>3. Förbättra Single Responsibility och minska LCOM-värden:</strong>Jag kommer att arbeta med att förbättra Single Responsibility och minska höga LCOM-värden, särskilt i klasser som ApiController. Genom att separera ansvarsområden och förbättra kodens struktur förväntar jag mig att minska antalet Violations/Errors och potentiella Code Smells. Detta kommer ytterligare öka kodkvaliteten och göra koden mer robust och lätt att underhålla.</p>
-            <p><strong>Före åtgärder:</strong>Genomsnittlig LCOM: 1.95, högsta värde: 9.</p>
-            <img src="{{ asset('img/analyze/lcom.png') }}" alt="lcom" width="1000px">
+        <p><strong>3. Förbättra Single Responsibility och minska LCOM-värden:</strong>Jag kommer att arbeta med att förbättra Single Responsibility och minska höga LCOM-värden, särskilt i klasser som ApiController. Genom att separera ansvarsområden och förbättra kodens struktur förväntar jag mig att minska antalet Violations/Errors och potentiella Code Smells. Detta kommer ytterligare öka kodkvaliteten och göra koden mer robust och lätt att underhålla.</p>
+        <p><strong>Före åtgärder:</strong>Genomsnittlig LCOM: 1.95, högsta värde: 9.</p>
+        <img src="{{ asset('img/analyze/lcom.png') }}" alt="lcom" width="1000px">
 
-            <p><strong>Efter åtgärder:</strong>Genomsnittlig LCOM: 1.63, högsta värde: 5. Två fel har tagits bort och antalet Violations har minskats.</p>
-            <img src="{{ asset('img/analyze/lcom_after.png') }}" alt="lcom" width="1000px">
+        <p><strong>Efter åtgärder:</strong>Genomsnittlig LCOM: 1.63, högsta värde: 5. Två fel har tagits bort och antalet Violations har minskats.</p>
+        <img src="{{ asset('img/analyze/lcom_after.png') }}" alt="lcom" width="1000px">
 
-            <p>Jag har valt att inte öka testtäckningen eftersom jag redan uppnår 100% täckning för de centrala klasserna.</p>
+        <p>Jag har valt att inte öka testtäckningen eftersom jag redan uppnår 100% täckning för de centrala klasserna.</p>
 
-            <div id="diskussion"><h2>Diskussion</h2></div>
-            <p>Efter att ha arbetat med Scrutinizer och phpmetrics är det tydligt att aktivt arbete med kodkvalitet och "clean code" är möjligt genom att använda dessa verktyg och följa etablerade kodningsriktlinjer. Genom att identifiera och åtgärda specifika problemområden kan man successivt förbättra kodkvaliteten och därigenom öka systemets stabilitet och underhållbarhet.</p>
-            <p>Fördelarna inkluderar förbättrad läsbarhet, lägre risk för buggar och enklare underhåll, vilket kan öka produktiviteten och minska kostnaderna på lång sikt. Å andra sidan kan fokuset på kodkvalitet ibland leda till ökad utvecklingstid och komplexitet, särskilt om för mycket tid ägnas åt optimering av mindre relevanta delar av koden.</p>
-            <p>En annan möjlighet för att arbeta mot "clean code" är att implementera kodgranskningsprocesser där teamet regelbundet granskar och ger feedback på varandras kod för att säkerställa överensstämmelse med kodningsstandarder och bästa praxis. Dessutom kan kontinuerlig utbildning och kunskapsdelning inom teamet bidra till att öka medvetenheten och förståelsen för vikten av kodkvalitet.</p>
-        </div>
+        <div id="diskussion"><h2>Diskussion</h2></div>
+        <p>Efter att ha arbetat med Scrutinizer och phpmetrics är det tydligt att aktivt arbete med kodkvalitet och "clean code" är möjligt genom att använda dessa verktyg och följa etablerade kodningsriktlinjer. Genom att identifiera och åtgärda specifika problemområden kan man successivt förbättra kodkvaliteten och därigenom öka systemets stabilitet och underhållbarhet.</p>
+        <p>Fördelarna inkluderar förbättrad läsbarhet, lägre risk för buggar och enklare underhåll, vilket kan öka produktiviteten och minska kostnaderna på lång sikt. Å andra sidan kan fokuset på kodkvalitet ibland leda till ökad utvecklingstid och komplexitet, särskilt om för mycket tid ägnas åt optimering av mindre relevanta delar av koden.</p>
+        <p>En annan möjlighet för att arbeta mot "clean code" är att implementera kodgranskningsprocesser där teamet regelbundet granskar och ger feedback på varandras kod för att säkerställa överensstämmelse med kodningsstandarder och bästa praxis. Dessutom kan kontinuerlig utbildning och kunskapsdelning inom teamet bidra till att öka medvetenheten och förståelsen för vikten av kodkvalitet.</p>
     </div>
 {% endblock %}
