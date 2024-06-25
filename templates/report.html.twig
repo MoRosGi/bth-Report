@@ -55,7 +55,7 @@
         Game: Denna klass innehåller alla logiska metoder för att spela Blackjack. Det är den enda klass som anropas från kontrollern.</p>
         <p>Implementationen gör att Game-klassen och användargränssnittet (UI) 'kommunicerar' via en gameState-egenskap som uppdateras av olika metoder. Detta gör att kontrollern kan köra rätt funktioner och att UI visar rätt knappar. Spelet börjar med att spelaren skriver sitt namn och väljer antal händer att spela med. Game-klassen kontrollerar att spelarens balans är tillräcklig för att spela så många händer. Därefter placeras insatserna för varje hand, två kort delas ut till varje hand, och ett öppet samt ett dolt kort delas ut till dealern. Spelet fortskrider med metoden playerAction som tar emot användarens input från UI. Metoden setTurn kontrollerar om nästa hand ska spelas eller om det är dealerns tur. När dealern är klar, beräknas vinsterna för varje hand med metoden countWin och spelarens nya balans uppdateras för nästa runda.</p>
         <p>Spelet vyn som ligger i templates/project består av åtta olika twig templates som bytas och updateras beroende på användaren request.</p>
-        <p>För att kunna nå en kodtäckning av 100% för hela src/Project mappen har jag skappa sex olika test classer under tests/Project.</p>
+        <p>För att uppnå en kodtäckning på 100% under docs/coverage (phpunit) för hela src/Project-mappen har jag skapat sex olika testklasser under tests/Project.</p>
         <h3>krav 4</h3>
         <p>För implementationen av API routes har jag valt fyra GET routes och en POST route. API routes byggs på en Game som initieras och sparas i session. Om ingen Game initieras visas en string meddelande.
         De fem routes i API är:<br>
