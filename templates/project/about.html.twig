@@ -1,0 +1,17 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <h1>About</h1>
+        <br>
+        <p><a href="{{ path('project_database') }}">About database</a></p>
+        <br>
+        <p>Projektet är en fortsättning och förbättring av kmom03 och innebär implementationen av ett Blackjack-spel. Jag har valt att omarbeta alla klasser för att få en bättre strukturerad kod jämfört med det som gjordes under kmom03.</p>
+        <br>
+        <p>Spelet är utformat så att en spelare kan spela med 1 till 3 händer mot banken. Korten tas från en sko som blandas med 3 kortlekar. Spelaren börjar med en balans på 155 pengar och kan spela tills pengarna tar slut. Det finns möjlighet för spelaren att spara sina resultat i en statistiktabell och börja ett nytt spel. Alla spel och spelarens statistik kan ses under proj/statistics. Implementationen följer Blackjack-reglerna, med undantag för split, double och insurance.</p>
+        <br>
+        <p>När spelaren har valt sin insats för varje hand börjar den första rundan. Både spelaren och dealern får två kort var, där dealern har ett öppet kort och ett "hole-kort" (nedåtvänt). Spelaren spelar varje hand genom att välja att stanna eller ta ett nytt kort (hit). När spelaren är klar visas dealerns hole-kort och poängen räknas enligt Blackjack-reglerna. Om spelaren har tillräckligt med pengar kan hen starta en ny runda, annars börjar ett nytt spel.</p>
+    </div>
+{% endblock %}

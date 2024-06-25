@@ -1,0 +1,46 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Statistics{% endblock %}
+
+{% block body %}
+    <div class="main">
+
+        {{ include('flash.html.twig') }}
+
+        <h1>Game Stats</h1>
+
+        <p><a href="{{ path('database_reset') }}">Reset database</a></p>
+
+        <table class="statistics">
+            <thead>
+                <tr>
+                    <th>Game ID</th>
+                    <th>Player name</th>
+                    <th>Player ID</th>
+                    <th>Game Start</th>
+                    <th>Game Stop</th>
+                    <th>number Of Round</th>
+                    <th>Player Bet</th>
+                    <th>Player Balance</th>
+                    <th>Player Winning</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in gameStats %}
+                    <tr>
+                        <td>{{ game.id }}</td>
+                        <td>{{ game.player.name }}</td>
+                        <td>{{ game.player.id }}</td>
+                        <td>{{ game.start|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ game.stop ? game.stop|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>{{ game.round }}</td>
+                        <td>{{ game.player.bet }}</td>
+                        <td>{{ game.player.balance }}</td>
+                        <td>{{ game.player.winning ? game.player.winning: '0' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

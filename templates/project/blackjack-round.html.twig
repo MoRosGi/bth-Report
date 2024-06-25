@@ -1,0 +1,31 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="main">
+
+        {% set playerTotalBet = 0 %}
+
+        {{ include('flash.html.twig') }}
+
+        <div class="board">
+
+            <div class="form-init">
+                <form method="post" action="">
+                    <label>How many hands do you want to play?</label>
+                    <input type="number" name="num_hand" min="1" max="3" value="1">
+                    <input type="submit" name="start" value="Start Round"
+                    onClick="this.form.action='{{ path('blackjack_round_post') }}';"
+                    >
+                </form>
+            </div>
+
+            <div class="bank-area">
+                <span>Player Name: {{ playerName }}</span>
+                <span>Balance: {{ playerBalance }}</span>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

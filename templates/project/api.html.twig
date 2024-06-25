@@ -1,0 +1,38 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Api{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <h1>Api Routes</h1>
+        <ul>
+            <li>
+                <span class="code">project/api/shoe</span>
+                <p><a href="{{ path('project_api_shoe') }}">Get the Shoe in a initialized Blackjack game.</a></p>
+            </li>
+            <br>
+            <li>
+                <span class="code">project/api/state</span>
+                <p><a href="{{ path('project_api_state') }}">Get the Game State in a initialized Blackjack game.</a></p>
+            </li>
+            <br>
+            <li>
+                <span class="code">project/api/player</span>
+                <p><a href="{{ path('project_api_player') }}">Get the Players Hands in a initialized Blackjack game.</a></p>
+            </li>
+            <br>
+            <li>
+                <span class="code">project/api/dealer</span>
+                <p><a href="{{ path('project_api_dealer') }}">Get the Dealers Hand in a initialized Blackjack game.</a></p>
+            </li>
+            <br>
+            <li>
+                <span class="code">project/api/draw</span>
+                <form method="post" action="">
+                    <input type="submit" name="" value="draw" onClick="this.form.action='{{ path('project_api_draw') }}';">
+                </form>
+                <p>POST route, draw one card from the shoe in a initialized Blackjack game.</p>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

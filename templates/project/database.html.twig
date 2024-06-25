@@ -1,0 +1,38 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}About database{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <h1>About database</h1>
+
+        <h2>1.</h2>
+        <img src="{{ asset('img/ER.png') }}" alt="er">
+        <br>
+        <br>
+        <h2>2.</h2>
+        <p>GameStats-tabellen innehåller ett id för game som är primary key, ett datum och en tid när game började, ett datum och en tid när game slutade, ett nummer för totalt antal rundor gjorda i spelet samt en foreign key som representerar player id, det vill säga spelaren som har spelat.</p>
+        <br>
+        <p>PlayerStats-tabellen innehåller ett id för player som är primary key, ett namn för spelaren, en balance som är hur mycket pengar spelaren har kvar, winnings som är hur mycket spelaren har vunnit och bet som representerar hur mycket spelaren har bettat totalt.</p>
+        <br>
+        <br>
+        <h2>3.</h2>
+        <p>För att lösa relationerna mellan tabellerna GameStats och PlayerStats har jag använt Doctrine ORM Associations/Relations med Symfony. Jag började med att skapa entiteten PlayerStats med en primärnyckel för att säkerställa unik identifiering.</p>
+        <br>
+        <p>Eftersom en spelare (PlayerStats) kan ha flera spel (GameStats) och varje spel har en spelare, skapade jag entiteten GameStats med en primärnyckel. Den har också en player-egenskap som är kopplad till PlayerStats entiteten genom en ManyToOne-relation. Från GameStats entitets perspektiv är relationen ManyToOne, vilket innebär att varje spel tillhör en specifik spelare. Från PlayerStats entitets perspektiv är relationen OneToMany, vilket gör att man kan nå en samling av alla spel (game collection) som tillhör en specifik spelare.</p>
+        <br>
+        <p>Annoteringen #[ORM\JoinColumn(nullable: false)] säkerställer att player_id-kolumnen alltid har en associerad spelare, vilket är nödvändigt för att varje spel ska kunna kopplas till rätt spelare korrekt.</p>
+        <br>
+        <p>För att säkerställa att relationerna mellan PlayerStats och GameStats är konsekventa på båda sidor implementerade jag metoderna addGame och removeGame i PlayerStats-klassen. När ett spel läggs till en spelare, sätts player-fältet i GameStats till den aktuella PlayerStats-instansen. Om ett spel tas bort från en spelare, sätts player-fältet i GameStats till null om det är nödvändigt, vilket hanteras automatiskt av Doctrine ORM.</p>
+        <br>
+        <p>Genom denna struktur är relationerna mellan GameStats och PlayerStats korrekt implementerade och hanterade. Detta möjliggör effektiv databashantering och förenklar åtkomsten och manipulationen av data mellan dessa två tabeller.</p>
+        <br>
+        <br>
+        <h2>4.</h2>
+        <p>För att lösa databashanteringen med ORM har jag använt SQLite.</p>
+        <br>
+        <br>
+        <h2>5.</h2>
+        <p>Inga särskilda tester mot databasen har genomförts.</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Session{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <p><a href="{{ path('project_session_delete') }}">Clear Session content</a></p>
+        <p>{{ dump(session) }}</p>
+    </div>
+{% endblock %}

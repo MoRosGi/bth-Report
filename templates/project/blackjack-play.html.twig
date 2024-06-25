@@ -1,0 +1,133 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="board">
+
+
+            <span class="dealer-hand">
+                {% if gameState != "player turn" %}
+                <p class="text-hand">
+                    value: {{ dealerHand.handValue() }}
+                </p>
+                    {% if dealerHand.handValue() > 21 %}
+                        <span class="bust">BUST</span>
+                    {% endif %}
+                
+                    {% if dealerHand.isBlackjack() == true %}
+                        <span class="blackjack">BLACKJACK</span>
+                    {% endif %}
+                {% endif %}
+
+                {% for key, card in dealerHand.getCards() %}
+                    <span><img class="card" src="{{ asset('img/blackjack/' ~ card.getImageLink() ~ '.svg') }}" alt="card" style="left: calc(5% + {{ key * 30 }}px - 2px); top: calc(30% + {{ key * 6 }}px);"></span>
+                {% endfor %}
+            </span>
+
+
+            <span class="shoe">Shoe: {{ shoe }}</span>
+
+
+            <div class="player-hand-area">
+
+                {% set playerTotalBet = 0 %}
+                {% set playerTotalWin = 0 %}
+
+                {% for key, hand in playerHand %}
+
+                    {% set playerTotalBet = playerTotalBet + hand.getBet() %}
+                    {% set playerTotalWin = playerTotalWin + hand.getWinning() %}
+
+                    <span class="player-hand">
+                        {% if key == activeHandIndex and gameState == "player turn" %}
+                            <span class="active-hand">🡻</span>
+                        {% endif %}
+
+                        <p class="text-hand">
+                            hand: {{ key }} ~ 
+                            bet: {{ hand.getBet() }} ~ 
+                            value: {{ hand.handValue() }}
+                        </p>
+
+                        {% if gameState == "round end" %}
+                            {% if hand.getWinning() == hand.getBet() %}
+                                <span class="win">PUSH</span>
+                            {% endif %}
+                            {% if hand.getWinning() > hand.getBet() %}
+                                <span class="win">WIN</span>
+                            {% endif %}
+                            {% if hand.getWinning() == 0 and hand.handValue() < 21%}
+                                <span class="win">LOOSE</span>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if hand.handValue() > 21 %}
+                            <span class="bust">BUST</span>
+                        {% endif %}
+
+                        {% if hand.isBlackjack() == true %}
+                            <span class="blackjack">Blackjack</span>
+                        {% endif %}
+
+                        {% for key, card in hand.getCards() %}
+                            <span><img class="card" src="{{ asset('img/blackjack/' ~ card.getImageLink() ~ '.svg') }}" alt="me" style="left: calc(5% + {{ key * 30 }}px - 2px); top: calc(30% + {{ key * 6 }}px);"></span>
+                        {% endfor %}
+                    </span>
+
+                {% endfor %}
+            </div>
+
+
+                {% if gameState == "deal" %}
+                <div class="action-area">
+                    <form action="" method="post">
+                        <input type="submit" name="deal" value="deal" onClick="this.form.action='{{ path('blackjack_deal_post') }}';">
+                    </form>
+                </div>
+                {% endif %}
+
+                {% if gameState == "player turn" %}
+                    <div class="action-area">
+                        <form action="{{ path('blackjack_action_post') }}" method="post">
+                            <input type="submit" name="action" value="stand" style="top: 100px">
+                            <input type="submit" name="action" value="hit">
+                        </form>
+                    </div>
+                {% endif %}
+
+                {% if gameState == "round end" and playerBalance >= 1 %}
+                    <div class="action-area">
+                        <form action="{{ path('blackjack_save') }}" method="post">
+                            <input type="submit" name="action" value="save and exit" style="top: 100px">
+                        </form>
+                    </div>
+                    <div class="action-area">
+                        <a href="{{ path('blackjack_round') }}">
+                            <button>next round</button>
+                        </a>
+                    </div>
+                {% elseif gameState == "round end" and playerBalance < 1 %}
+                    <div class="action-area">
+                        <form action="{{ path('blackjack_save') }}" method="post">
+                            <input type="submit" name="action" value="new game" style="top: 100px">
+                        </form>
+                    </div>
+                {% endif %}
+
+
+            <div class="bank-area">
+                <span>Player Name: {{ playerName }}</span>
+                <span>Balance: {{ playerBalance }}</span>
+                <span>Total Bet: {{ playerTotalBet }}</span>
+                <span>Winning: 
+                    {% if gameState == "round end" %}
+                        {{ playerTotalWin }}
+                    {% endif %}
+                </span>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

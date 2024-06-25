@@ -1,0 +1,48 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    {% set playerTotalBet = 0 %}
+
+    <div class="main">
+
+        {{ include('flash.html.twig') }}
+
+        <div class="board">
+
+            <span class="dealer-hand">
+                <p class="text-bet">SET YOUR BET</p>
+
+            </span>
+
+            <span class="shoe">Shoe: {{ shoe }}</span>
+
+            
+            <div class="form-bet">
+
+                <form action="" method="post">
+                    {% for key, hand in playerHand %}
+
+                        <span class="player-hand">
+                            <p class="text-hand">
+                                hand: {{ key }}
+                            </p>
+                            <input type="number" name="{{ key }}" min="1" max="" value="1">
+                        </span>
+
+                    {% endfor %}
+                    <input type="submit" name="bet" value="bet" onClick="this.form.action='{{ path('blackjack_bet_post') }}';">
+                </form>
+
+            </div>
+
+            <div class="bank-area">
+                <span>Player Name: {{ playerName }}</span>
+                <span>Balance: {{ playerBalance }}</span>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

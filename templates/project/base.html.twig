@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/ico.svg') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('project') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('project') }}
+            {% block importmap %}{{ importmap('project') }}{% endblock %}
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="header">
+            <header class="site-header">
+                <span>mvc | Project</span>
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a class="report" href="{{ path('home') }}">Back to report</a></li>
+                    <li><a href="{{ path('blackjack_init') }}">BlackJack</a></li>
+                    <li><a href="{{ path('project_statistics') }}">Statistics</a></li>
+                    <li><a href="{{ path('project_about') }}">About</a></li>
+                    <li><a href="{{ path('project_api') }}">Api</a></li>
+                    <li><a href="{{ path('project_session') }}">Session</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        {% block body %}{% endblock %}
+
+        <div class="footer">
+            <p>MVC - kursen</p>
+            <a href="https://dbwebb.se/kurser/mvc-v2"><p>Kurs sida</p></a>
+        </div>
+    </body>
+</html>
