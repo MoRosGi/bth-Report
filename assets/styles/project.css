@@ -1,0 +1,348 @@
+@import url("https://fonts.googleapis.com/css2?family=Calistoga&family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #e9e8eb;
+    font-family: "Lora", sans-serif;
+}
+
+body {
+    line-height: 1.4;
+    color: #435843;
+}
+
+.main {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    align-items: center;
+    width: 67rem;
+    margin: 10rem auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+.flash-warning {
+    position: absolute;
+    top: 170px;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+}
+
+.flash-warning:before {
+    content: "⚠";
+}
+
+/* header */
+.header,
+.site-header {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header {
+    justify-content: flex-start;
+    background-color: #e38887;
+    min-height: 8rem;
+    gap: 6rem;
+}
+
+.site-header {
+    margin-left: 3rem;
+    color: #e9e8eb;
+    font-size: 1.9rem;
+    font-style: italic;
+}
+
+/* navbar */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+}
+
+nav a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 1.9rem 0;
+    color: #435843;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+nav .report {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* footer */
+.footer {
+    display: flex;
+    flex: 0 0 auto;
+    bottom: 0;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    padding: 1rem 3rem;
+}
+
+.footer a,
+.footer p {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.footer a {
+    color: #435843;
+}
+
+/* typography */
+h1 {
+    font-family: "Calistoga", serif;
+    padding-bottom: 2rem;
+}
+
+p {
+    font-size: 1.3rem;
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+}
+
+.home {
+    font-size: 3rem;
+    font-weight: 600;
+    padding-top: 5rem;
+}
+
+.code {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 0.1em;
+    margin-right: 2em;
+}
+
+/** GAME **/
+.board,
+.board-init,
+.form-init,
+.form-init form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* board */
+.board {
+    justify-content: center;
+    position: relative;
+    gap: 2.5rem;
+    height: 40rem;
+    width: 100%;
+    background: radial-gradient(at center, #2e8456, #0f4436);
+}
+
+/* board text */
+.text-hand,
+.bank-area,
+.shoe {
+    background-color: #000000bf;
+    color: #d7d7d6;
+    font-size: 0.9rem;
+}
+
+.shoe {
+    position: absolute;
+    padding: 1rem;
+    right: 0;
+    top: 0;
+}
+
+/* form-init */
+.form-init,
+.form-init form {
+    justify-content: center;
+}
+
+.form-init {
+    width: 25rem;
+    background-color: #204549;
+    border: 3px solid #d7d7d6;
+    border-radius: 2rem;
+    box-shadow: 0.7rem 0.6rem 2.3rem 0rem #000000bf;
+}
+
+.form-init form label {
+    font-family: "Roboto Condensed", sans-serif;
+    color: #d7d7d6;
+    font-size: 1.5rem;
+}
+
+.form-init form input[type="number"],
+.form-bet form input[type="number"] {
+    border-radius: 0.5rem;
+    height: 1.5rem;
+    width: 5rem;
+    margin-bottom: 1rem;
+    font-family: "Lora", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding-left: 0.6rem;
+}
+
+.form-init form input[type="submit"],
+.form-bet form input[type="submit"],
+.action-area form input[type="submit"],
+.action-area a button {
+    border: 1px solid #d7d7d6;
+    border-radius: 1.5rem;
+    height: 4rem;
+    width: 9rem;
+    margin-bottom: 1rem;
+    background-color: #e38887;
+    font-size: 1rem;
+    font-family: "Calistoga", serif;
+    margin-top: 1rem;
+}
+
+.form-init form input[type="submit"]:hover,
+.form-bet form input[type="submit"]:hover,
+.action-area form input[type="submit"]:hover,
+.action-area a button:hover {
+    box-shadow: 0.4rem 0.3rem 1rem 0rem #000000bf;
+}
+
+/* bet*/
+.form-bet form,
+.player-hand-area,
+.action-area form,
+.action-area a {
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+}
+.form-bet form input[type="submit"],
+.action-area form input[type="submit"],
+.action-area a button {
+    left: 56rem;
+    position: absolute;
+    top: 13rem;
+}
+
+.text-bet {
+    color: #e38887;
+    font-size: 2rem;
+    padding: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* card */
+.card {
+    display: inline;
+    position: absolute;
+    width: 6rem;
+}
+
+/* hands */
+.player-hand,
+.dealer-hand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border: 2px solid #d7d7d6;
+    height: 15rem;
+    width: 15rem;
+}
+
+.player-hand {
+    border-radius: 8rem;
+}
+
+.active-hand {
+    color: #e38887;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.bust {
+    color: #ee4034;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.blackjack {
+    color: #f6d57d;
+    font-weight: 600;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.win {
+    color: #d7d7d6;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* bank */
+.bank-area {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem 2rem;
+}
+
+/* database */
+.statistics {
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 5em;
+    border-collapse: collapse;
+    font: "Calistoga", serif;
+    color: #e38887;
+}
+
+.statistics thead tr,
+.statistics tbody tr {
+    border-bottom: solid 1px #e38887;
+    padding: 10px;
+}
+
+.statistics thead tr {
+    background-color: #d7d7d6;
+    text-align: left;
+}
+
+.statistics thead th,
+.statistics tbody td {
+    padding: 1em;
+}
+
+.statistics tbody tr:last-child {
+    border-bottom: 0;
+}
