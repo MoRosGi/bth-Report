@@ -28,16 +28,16 @@ This is a Symfony project created as part of a course assignment. The project in
 To get started with the project, you need to clone the repository and install the dependencies.
 You need to have composer and PHP 3 installed.
 
-- [Clone the repository](#clone-the-repository)
-- [Install the project skeleton](#install-the-project-skeleton)
-  - [install symfony](#install-symfony)
-  - [install webapp](#install-webapp)
-  - [install Twig](#install-twig)
-  - [install Encore](#install-encore)
-- [Run the app](#run-the-app)
-- [Features](#features)
-- [Styling](#styling)
-- [Contributors](#contributors)
+-   [Clone the repository](#clone-the-repository)
+-   [Install the project skeleton](#install-the-project-skeleton)
+    -   [install symfony](#install-symfony)
+    -   [install webapp](#install-webapp)
+    -   [install Twig](#install-twig)
+    -   [install Encore](#install-encore)
+-   [Run the app](#run-the-app)
+-   [Features](#features)
+-   [Styling](#styling)
+-   [Contributors](#contributors)
 
 ## Clone the repository:
 
@@ -96,12 +96,17 @@ php -S localhost:8888 -t public
 
 ## Features
 
-- '/': Presentation of myself including an image.
-- '/about': Information about the MVC course, including a link to the course's Git repository, and a link to my own GitHub repository.
-- '/report': Collection of reports with links to specific sections.
-- '/lucky': Page showing a dynamic value and images.
-- '/api': Landing page for the JSON API.
-- '/api/quote': JSON response containing today's quote, date, and timestamp.
+-   '/': Presentation of myself including an image.
+-   '/about': Information about the MVC course, including a link to the course's Git repository, and a link to my own GitHub repository.
+-   '/report': Collection of reports with links to specific sections.
+-   '/lucky': Page showing a dynamic value and images.
+-   '/api': Landing page for the JSON API.
+-   '/pig game': Implementation of a simple dice game.
+-   '/card game': Implementation of a simple card game.
+-   '/twenty-one': Implementation of a twenty-one card game.
+-   '/library': Implementation of a library using ORM database.
+-   '/metrics': Analyze of the metrics of this project with Scrutinizer and Phpmetrics.
+-   '/project': Project page, implementation of a blackjack game.
 
 ## Styling
 
@@ -109,8 +114,8 @@ The website has been styled to provide a cohesive and visually appealing experie
 
 ## Contributors
 
-- mogi23 - Developer
-- Acknowledgements:
-  - Symfony Framework
-  - Twig Templating Engine
-  - Composer
+-   mogi23 - Developer
+-   Acknowledgements:
+    -   Symfony Framework
+    -   Twig Templating Engine
+    -   Composer
